@@ -33,3 +33,6 @@
 
 # Enonce
 *.pdf
+
+# Fichiers swap
+*.swp
