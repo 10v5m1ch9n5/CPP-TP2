@@ -2,10 +2,15 @@
 class Chainon
 {
 public:
+    // Get Set
     void SetSuivant(Chainon* c);
     void SetTrajetSimple(TrajetSimple* ts);
+    Chainon* GetSuivant();
+    TrajetSimple* GetTrajetSimple();
+    // Méthodes
+    void ToString();
+    // Constructeurs
     Chainon(TrajetSimple* ts, Chainon* suivant);
-    Chainon();
 private:
     TrajetSimple* ts;
     Chainon* suivant;
