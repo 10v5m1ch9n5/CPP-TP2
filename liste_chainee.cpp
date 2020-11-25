@@ -38,13 +38,28 @@ void ListeChainee::Ajouter(TrajetSimple *ts) {
 
 void ListeChainee::Supprimer(int index) {
     Chainon* courant = this->premier;
+    if (index == 0)
+    {
+        this->premier = courant->GetSuivant();
+        taille--;
+        delete courant;
+        return;
+    }
     Chainon* precedent;
     for (int i = 0; i < index; i++) {
         precedent = courant;
         courant = courant->GetSuivant();
     }
-    courant->ToString();
     precedent->SetSuivant(courant->GetSuivant());
     taille--;
     delete courant;
+}
+
+Chainon* ListeChainee::Get(int index) {
+    Chainon* courant = this->premier;
+    for (int i = 0; i < index; i++)
+    {
+        courant = courant->GetSuivant();
+    }
+    return courant;
 }

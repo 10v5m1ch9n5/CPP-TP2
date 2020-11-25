@@ -11,8 +11,6 @@ int main()
     liste.Ajouter(ts);
     liste.Ajouter(ts2);
     liste.Ajouter(ts3);
-    //liste.ToString();
-    //liste.Supprimer(1);
-    //liste.ToString();
+    liste.Get(2)->ToString();
     return 0;
 }
