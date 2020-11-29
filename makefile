@@ -1,7 +1,13 @@
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11
 
+main.out:main.o chainon.o liste_chainee.o trajet_simple.o
+	g++ -o $@ $^
+
 test.out:tests.o chainon.o liste_chainee.o trajet_simple.o
 	g++ -o $@ $^
+
+main:main.cpp
+	g++ -c $<
 
 tests:tests.cpp
 	g++ -c $<
@@ -17,4 +23,4 @@ trajet_simple:trajet_simple.cpp trajet_simple.h
 
 clean:
 	rm -f *.o *.out
-all:test
+all:test.out main.out
