@@ -6,7 +6,7 @@ private:
     ListeChainee* lc;
 public:
 // Constructeur
-    TrajetCompose(ListeChainee lc);
+    TrajetCompose(ListeChainee* lc);
 // Destructeur
     ~TrajetCompose();
 };

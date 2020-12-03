@@ -3,7 +3,7 @@
 //
 
 #include "trajet_compose.h"
-TrajetCompose::TrajetCompose(ListeChainee lc)
+TrajetCompose::TrajetCompose(ListeChainee* lc)
 {
     this->lc = lc;
 }
