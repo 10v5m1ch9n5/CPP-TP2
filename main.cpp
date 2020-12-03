@@ -5,12 +5,13 @@
 #include "liste_chainee.h"
 using namespace std;
 
-Trajet catalogue[100];
+Trajet* catalogue[100];
 int iCatalogue;
 
 void AjouterTrajetSimple()
 {
     TrajetSimple* tsptr;
+    cin.ignore(1);
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
     char* moyenTransport = new char [25];
@@ -21,10 +22,12 @@ void AjouterTrajetSimple()
     cout << "Entez le moyen de transport :" << endl;
     cin.getline(moyenTransport, 25);
 
-    tsptr = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
-    catalogue[iCatalogue] = *tsptr;
+    catalogue[iCatalogue] = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     iCatalogue++;
-    delete tsptr;
+
+    delete[] villeDepart;
+    delete[] villeArrivee;
+    delete[] moyenTransport;
 }
 
 void AjouterTrajetCompose()
@@ -56,7 +59,7 @@ void AfficherCatalogue()
     for(int i = 0; i < iCatalogue; i++)
     {
         cout << "Trajet n° " << i << " :" << endl;
-        catalogue[i].ToString();
+        catalogue[i]->ToString();
     }
 }
 
