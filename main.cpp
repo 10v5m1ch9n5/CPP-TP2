@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include "liste_chainee.h"
+#include "trajet_compose.h"
 using namespace std;
 
 Trajet* catalogue[100];
@@ -11,7 +12,6 @@ int iCatalogue;
 
 void AjouterTrajetSimple()
 {
-    TrajetSimple* tsptr;
     cin.ignore(1);
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
@@ -66,7 +66,7 @@ void Rechercherparcours()
     cin.getline(villeArrivee, 25);
     for(int i = 0; i < iCatalogue; i++)
     {  // int a = strcmp(catalogue[i]->GetDepart())
-        if (strcmp(catalogue[i]->GetDepart()) == 0 and strcmp(villeArrivee, catalogue[i]->GetArrive()) == 0)
+        if (strcmp(villeDepart, catalogue[i]->GetDepart()) == 0 && strcmp(villeArrivee, catalogue[i]->GetArrive()) == 0)
         {
             cout << "Trajet n° " << i << " :" << endl;
             catalogue[i]->ToString();
@@ -122,6 +122,7 @@ int main()
                 break;
             default:
                 cout << "Veuillez entrer un chiffre correct." << endl;
+                break;
         }
 
         if(quitter)
