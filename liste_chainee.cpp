@@ -1,31 +1,19 @@
 //
 // Created by lucas on 25/11/2020.
 //
-#define DEBUG
-
 #include "liste_chainee.h"
 
-ListeChainee::ListeChainee()
+template<class T>
+ListeChainee<T>::ListeChainee()
 {
     this->taille = 0;
     this->premier = nullptr;
     this->dernier = nullptr;
 }
 
-void  ListeChainee::ToString() {
-    Chainon* courant = this->premier;
-
-    while (courant->GetSuivant() != nullptr)
-    {
-       courant->GetTrajetSimple()->ToString();
-       courant = courant->GetSuivant();
-    }
-    courant->GetTrajetSimple()->ToString();
-    delete courant;
-}
-
-void ListeChainee::Ajouter(TrajetSimple *ts) {
-    Chainon* nouveau = new Chainon(ts, nullptr);
+template<class T>
+void ListeChainee<T>::Ajouter(T* element) {
+    Chainon<T>* nouveau = new Chainon<T>(element, nullptr);
     if (taille == 0) {
         this->premier = this->dernier = nouveau;
         taille++;
@@ -36,8 +24,9 @@ void ListeChainee::Ajouter(TrajetSimple *ts) {
     taille++;
 }
 
-void ListeChainee::Supprimer(int index) {
-    Chainon* courant = this->premier;
+template<class T>
+void ListeChainee<T>::Supprimer(int index) {
+    Chainon<T>* courant = this->premier;
     if (index == 0)
     {
         this->premier = courant->GetSuivant();
@@ -45,7 +34,7 @@ void ListeChainee::Supprimer(int index) {
         delete courant;
         return;
     }
-    Chainon* precedent;
+    Chainon<T>* precedent;
     for (int i = 0; i < index; i++) {
         precedent = courant;
         courant = courant->GetSuivant();
@@ -55,11 +44,16 @@ void ListeChainee::Supprimer(int index) {
     delete courant;
 }
 
-Chainon* ListeChainee::Get(int index) {
-    Chainon* courant = this->premier;
+template<class T>
+Chainon<T>* ListeChainee<T>::Get(int index) {
+    Chainon<T>* courant = this->premier;
     for (int i = 0; i < index; i++)
     {
         courant = courant->GetSuivant();
     }
     return courant;
 }
+
+template class ListeChainee<Trajet>;
+template class ListeChainee<TrajetSimple>;
+// template class ListeChainee<TrajetCompose>;

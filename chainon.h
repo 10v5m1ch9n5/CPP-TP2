@@ -1,17 +1,23 @@
+#ifndef TRAJETSIMPLE_H
+#define TRAJETSIMPLE_H
+
 #include "trajet_simple.h"
+template <class T>
 class Chainon
 {
 public:
     // Get Set
-    void SetSuivant(Chainon* c);
-    void SetTrajetSimple(TrajetSimple* ts);
+    void SetSuivant(Chainon<T>* c);
+    void SetElement(T* element);
     Chainon* GetSuivant();
-    TrajetSimple* GetTrajetSimple();
+    T* GetElement();
     // Méthodes
     void ToString();
     // Constructeurs
-    Chainon(TrajetSimple* ts, Chainon* suivant);
+    Chainon(T* element, Chainon* suivant);
 private:
-    TrajetSimple* ts;
+    T* element;
     Chainon* suivant;
 };
+
+#endif

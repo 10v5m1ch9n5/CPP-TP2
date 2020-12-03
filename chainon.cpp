@@ -3,42 +3,46 @@
 using namespace std;
 
 // Constructeurs
-Chainon::Chainon(TrajetSimple* ts, Chainon* suivant = nullptr)
+template<class T>
+Chainon<T>::Chainon(T* element, Chainon<T>* suivant)
 {
-#ifdef MAP
-    cout << "Contructeur de Chainon appelé" << endl;
-#endif
     this->suivant = suivant;
-    this->ts = ts;
+    this->element = element;
 }
 
 // Get Set
-void Chainon::SetSuivant(Chainon *c) {
+template<class T>
+void Chainon<T>::SetSuivant(Chainon<T> *c) {
     this->suivant = c;
 }
 
-void Chainon::SetTrajetSimple(TrajetSimple *ts) {
-    this->ts = ts;
+template<class T>
+void Chainon<T>::SetElement(T *element)
+{
+    this->element = element;
 }
 
-Chainon* Chainon::GetSuivant() {
+template<class T>
+Chainon<T>* Chainon<T>::GetSuivant() {
     return this->suivant;
 }
 
-TrajetSimple* Chainon::GetTrajetSimple() {
-    return this->ts;
+template<class T>
+T* Chainon<T>::GetElement() {
+    return this->element;
 }
 
 // Méthodes
-void Chainon::ToString() {
+template<class T>
+void Chainon<T>::ToString() {
     cout << "Chainon : ";
-    if(this->ts == nullptr)
+    if(this->element == nullptr)
     {
         cout << "vide" << endl;
         return;
     }
     cout << endl;
-    this->ts->ToString();
+    this->element->ToString();
     if(this->suivant == nullptr)
     {
         cout << "chainon suivant inexistant" << endl;
@@ -46,3 +50,7 @@ void Chainon::ToString() {
     }
     cout << "chainon suivant défini" << endl;
 }
+
+template class Chainon<Trajet>;
+template class Chainon<TrajetSimple>;
+// template class Chainon<TrajetCompose>;
