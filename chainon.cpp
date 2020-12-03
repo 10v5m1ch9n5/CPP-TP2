@@ -3,7 +3,7 @@
 using namespace std;
 
 // Constructeurs
-Chainon::Chainon(TrajetSimple* ts = nullptr, Chainon* suivant = nullptr)
+Chainon::Chainon(TrajetSimple* ts, Chainon* suivant = nullptr)
 {
 #ifdef MAP
     cout << "Contructeur de Chainon appelé" << endl;
