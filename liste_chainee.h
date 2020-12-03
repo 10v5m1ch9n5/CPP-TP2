@@ -1,3 +1,6 @@
+#ifndef LISTECHAINEE_H
+#define LISTECHAINEE_H
+
 #include "chainon.h"
 class ListeChainee
 {
@@ -15,3 +18,5 @@ protected:
     Chainon* dernier;
     int taille;
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef CHAINON_H
+#define CHAINON_H
+
 #include "trajet.h"
 class Chainon
 {
@@ -15,3 +18,5 @@ private:
     Trajet* trajet;
     Chainon* suivant;
 };
+
+#endif
