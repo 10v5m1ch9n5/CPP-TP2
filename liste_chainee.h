@@ -4,9 +4,10 @@ class ListeChainee
 public:
 // Méthodes
     void ToString(void);
-    void Ajouter(TrajetSimple* ts);
+    void Ajouter(Trajet* t);
     void Supprimer(int index);
     Chainon* Get(int index);
+    int GetTaille();
 // Constructeurs
     ListeChainee();
 protected:

@@ -3,13 +3,10 @@
 using namespace std;
 
 // Constructeurs
-Chainon::Chainon(TrajetSimple* ts, Chainon* suivant = nullptr)
+Chainon::Chainon(Trajet* t, Chainon* suivant = nullptr)
 {
-#ifdef MAP
-    cout << "Contructeur de Chainon appelé" << endl;
-#endif
     this->suivant = suivant;
-    this->ts = ts;
+    this->trajet = t;
 }
 
 // Get Set
@@ -17,28 +14,28 @@ void Chainon::SetSuivant(Chainon *c) {
     this->suivant = c;
 }
 
-void Chainon::SetTrajetSimple(TrajetSimple *ts) {
-    this->ts = ts;
+void Chainon::SetTrajet(Trajet *t) {
+    this->trajet = t;
 }
 
 Chainon* Chainon::GetSuivant() {
     return this->suivant;
 }
 
-TrajetSimple* Chainon::GetTrajetSimple() {
-    return this->ts;
+Trajet* Chainon::GetTrajet() {
+    return this->trajet;
 }
 
 // Méthodes
 void Chainon::ToString() {
     cout << "Chainon : ";
-    if(this->ts == nullptr)
+    if(this->trajet == nullptr)
     {
         cout << "vide" << endl;
         return;
     }
     cout << endl;
-    this->ts->ToString();
+    this->trajet->ToString();
     if(this->suivant == nullptr)
     {
         cout << "chainon suivant inexistant" << endl;

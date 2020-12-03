@@ -1,15 +1,18 @@
 #include <iostream>
 using namespace std;
-#include "liste_chainee.h"
-#include "trajet_simple.h"
+#include "trajet_compose.h"
 
 int main()
 {
     TrajetSimple* ts = new TrajetSimple("Paris Gare de Lyon", "Lyon Part-Dieu", "TGV");
-    //TrajetSimple* ts2 = new TrajetSimple("Lyon Part-Dieu", "Marseille Saint-Charles", "TGV");
-    //TrajetSimple* ts3 = new TrajetSimple("Lyon Part-Dieu", "Gaston Berger", "Tramway");
+    TrajetSimple* ts2 = new TrajetSimple("Lyon Part-Dieu", "Marseille Saint-Charles", "TGV");
+    TrajetSimple* ts3 = new TrajetSimple("Lyon Part-Dieu", "Gaston Berger", "Tramway");
 
-    cout << ts->GetDepart() << endl;
-    cout << ts->GetArrive() << endl;
+
+    TrajetCompose tc;
+    tc.AjouterTrajet(ts2);
+    tc.AjouterTrajet(ts3);
+    tc.ToString();
+
     return 0;
 }
