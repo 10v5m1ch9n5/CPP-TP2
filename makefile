@@ -3,7 +3,7 @@ CPPFLAGS = -ansi -pedantic -Wall -std=c++11
 main.out:main.o chainon.o liste_chainee.o trajet_simple.o
 	g++ -o $@ $^
 
-test.out:tests.o chainon.o liste_chainee.o trajet_simple.o
+test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o
 	g++ -o $@ $^
 
 main:main.cpp

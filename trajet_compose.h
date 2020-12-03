@@ -1,18 +1,24 @@
 #ifndef TRAJETCOMPOSE_H
 #define TRAJETCOMPOSE_H
 
-#include "trajet.h"
+#include "trajet_simple.h"
 #include "liste_chainee.h"
 
 class TrajetCompose : public Trajet
 {
 private:
-    ListeChainee<Trajet>* lc;
+    ListeChainee* listeChainee;
 public:
 // Constructeur
-    TrajetCompose(ListeChainee<Trajet>* lc);
+    TrajetCompose();
 // Destructeur
-    ~TrajetCompose() {};
+    ~TrajetCompose();
+// Methodes
+    const char * GetDepart() override;
+    const char * GetArrive() override;
+    void ToString() override;
+    void AjouterTrajet(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
+    void AjouterTrajet(Trajet* t);
 };
 
 #endif

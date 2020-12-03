@@ -2,8 +2,43 @@
 // Created by lucas on 03/12/2020.
 //
 
+#include <iostream>
+using namespace std;
 #include "trajet_compose.h"
-TrajetCompose::TrajetCompose(ListeChainee<Trajet>* lc)
-{
-    this->lc = lc;
+
+TrajetCompose::TrajetCompose() {
+    listeChainee = new ListeChainee();
+}
+
+void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
+    TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    AjouterTrajet(ts);
+}
+
+void TrajetCompose::AjouterTrajet(Trajet *t) {
+    if(listeChainee->GetTaille() != 0 && t->GetDepart() != GetArrive()) {
+        cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;
+        return;
+    }
+    listeChainee->Ajouter(t);
+}
+
+const char * TrajetCompose::GetArrive() {
+    if(listeChainee->GetTaille() == 0)
+        return nullptr;
+    return listeChainee->Get(listeChainee->GetTaille()-1)->GetTrajet()->GetArrive();
+}
+
+const char * TrajetCompose::GetDepart() {
+    if(listeChainee->GetTaille() == 0)
+        return nullptr;
+    return listeChainee->Get(0)->GetTrajet()->GetDepart();
+}
+
+void TrajetCompose::ToString() {
+    cout << "De " << GetDepart() << " à " << GetArrive() << endl;
+}
+
+TrajetCompose::~TrajetCompose() {
+    delete listeChainee;
 }

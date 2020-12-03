@@ -1,6 +1,6 @@
 #include "trajet_simple.h"
 #include <iostream>
-#include <cstring>
+
 using namespace std;
 
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport)

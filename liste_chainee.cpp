@@ -17,15 +17,15 @@ void  ListeChainee::ToString() {
 
     while (courant->GetSuivant() != nullptr)
     {
-       courant->GetTrajetSimple()->ToString();
+       courant->GetTrajet()->ToString();
        courant = courant->GetSuivant();
     }
-    courant->GetTrajetSimple()->ToString();
+    courant->GetTrajet()->ToString();
     delete courant;
 }
 
-void ListeChainee::Ajouter(TrajetSimple *ts) {
-    Chainon* nouveau = new Chainon(ts, nullptr);
+void ListeChainee::Ajouter(Trajet *t) {
+    Chainon* nouveau = new Chainon(t, nullptr);
     if (taille == 0) {
         this->premier = this->dernier = nouveau;
         taille++;
@@ -62,4 +62,8 @@ Chainon* ListeChainee::Get(int index) {
         courant = courant->GetSuivant();
     }
     return courant;
+}
+
+int ListeChainee::GetTaille() {
+    return taille;
 }
