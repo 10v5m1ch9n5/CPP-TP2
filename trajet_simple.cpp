@@ -5,17 +5,9 @@ using namespace std;
 
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport)
 {
-    int taille = strlen(villeDepart);
-    this->depart = new char[taille+1];
-    strcpy(this->depart, villeDepart);
-
-    taille = strlen(villeArrivee);
-    this->arrivee = new char[taille+1];
-    strcpy(this->arrivee, villeArrivee);
-
-    taille = strlen(moyenTransport);
-    this->moyenTransport = new char[taille+1];
-    strcpy(this->moyenTransport, moyenTransport);
+    this->depart = villeDepart;
+    this->arrivee = villeArrivee;
+    this->moyenTransport = moyenTransport;
 }
 
 void TrajetSimple::ToString()
@@ -23,19 +15,12 @@ void TrajetSimple::ToString()
     cout << "De "<< this->depart << " à " << this->arrivee << " en " << this->moyenTransport << endl;
 }
 
-char* TrajetSimple::GetDepart(TrajetSimple* trajetSimple)
+const char* TrajetSimple::GetDepart()
 {
-    return trajetSimple->depart;
+    return depart;
 }
 
-char* TrajetSimple::GetArrive(TrajetSimple *trajetSimple)
+const char* TrajetSimple::GetArrive()
 {
-    return trajetSimple->arrivee;
-}
-
-TrajetSimple::~TrajetSimple() noexcept
-{
-    delete[] depart;
-    delete[] arrivee;
-    delete[] moyenTransport;
+    return arrivee;
 }
