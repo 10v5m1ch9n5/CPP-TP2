@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "liste_chainee.h"
+#include "trajet.h"
 
 int main()
 {
@@ -8,10 +9,10 @@ int main()
     TrajetSimple* ts2 = new TrajetSimple("Lyon Part-Dieu", "Marseille Saint-Charles", "TGV");
     TrajetSimple* ts3 = new TrajetSimple("Lyon Part-Dieu", "Gaston Berger", "Tramway");
 
-    Trajet* catalogue[10];
 
-    Trajet* trajetptr = ts;
-    catalogue[0] = trajetptr;
-    catalogue[0]->ToString();
+    ListeChainee<Trajet>* lc = new ListeChainee<Trajet>();
+    lc->Ajouter(ts);
+    lc->Ajouter(ts2);
+    lc->Ajouter(ts3);
     return 0;
 }
