@@ -13,7 +13,7 @@ class TrajetSimple : public Trajet
     public:
     TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
 // Méthodes
-    void ToString();
+    void ToString() override;
     const char* GetDepart() override;
     const char* GetArrive() override;
 // Destructeurs
