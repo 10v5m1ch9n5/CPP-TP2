@@ -23,6 +23,16 @@ void TrajetSimple::ToString()
     cout << "De "<< this->depart << " à " << this->arrivee << " en " << this->moyenTransport << endl;
 }
 
+char* TrajetSimple::GetDepart(TrajetSimple* trajetSimple)
+{
+    return trajetSimple->depart;
+}
+
+char* TrajetSimple::GetArrive(TrajetSimple *trajetSimple)
+{
+    return trajetSimple->arrivee;
+}
+
 TrajetSimple::~TrajetSimple() noexcept
 {
     delete[] depart;

@@ -11,6 +11,10 @@ class TrajetSimple : public Trajet
     TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
 // Méthodes
     void ToString();
+    char* GetDepart(TrajetSimple* trajetSimple);
+    char* GetArrive(TrajetSimple* trajetSimple);
 // Destructeurs
     ~TrajetSimple();
+
+    const char *GetDepart();
 };

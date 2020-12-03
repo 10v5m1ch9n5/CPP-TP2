@@ -53,7 +53,28 @@ void AjouterTrajet()
             break;
     }
 }
+void Rechercherparcours()
+{
+    char* villeDepart = new char [25];
+    char* villeArrivee = new char [25];
+    char* moyenTransport = new char [25];
 
+    cout << "Entrez la ville de départ :" << endl;
+    cin.getline(villeDepart, 25);
+    cout << "Entrez la ville d'arrivée :" << endl;
+    cin.getline(villeArrivee, 25);
+    cout << "Entez le moyen de transport :" << endl;
+    cin.getline(moyenTransport, 25);
+
+    for(int i = 0; i < iCatalogue; i++)
+    {
+        if
+    }
+
+
+
+
+}
 void AfficherCatalogue()
 {
     for(int i = 0; i < iCatalogue; i++)
@@ -87,7 +108,7 @@ int main()
                 AfficherCatalogue();
                 break;
             case 3:
-                cout << "Rechercher" << endl;
+                Rechercherparcours();
                 break;
             case 4:
                 quitter = true;

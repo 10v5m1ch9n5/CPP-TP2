@@ -4,6 +4,8 @@ class Trajet
 {
     public:
     virtual void ToString() {} ;
+    virtual const char* GetDepart() {};
+    virtual const char* GetArrive() {};
     virtual ~Trajet() = default;
 };
 
