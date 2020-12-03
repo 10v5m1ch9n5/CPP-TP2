@@ -116,7 +116,7 @@ int main()
                 break;
             default:
                 cout << "Veuillez entrer un chiffre correct." << endl;
-                cin.clear()
+                cin.clear(input);
                 break;
         }
 
