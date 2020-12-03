@@ -22,3 +22,10 @@ void TrajetSimple::ToString()
 {
     cout << "De "<< this->depart << " à " << this->arrivee << " en " << this->moyenTransport << endl;
 }
+
+TrajetSimple::~TrajetSimple() noexcept
+{
+    delete[] depart;
+    delete[] arrivee;
+    delete[] moyenTransport;
+}

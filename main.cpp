@@ -5,9 +5,53 @@
 #include "liste_chainee.h"
 using namespace std;
 
+Trajet* catalogue;
+int iCatalogue;
+
+void AjouterTrajetSimple()
+{
+    char* villeDepart = new char [25];
+    char* villeArrivee = new char [25];
+    char* moyenTransport = new char [25];
+    cout << "Entrez la ville de départ :" << endl;
+    cin.getline(villeDepart, 25);
+    cout << "Entrez la ville d'arrivée :" << endl;
+    cin.getline(villeArrivee, 25);
+    cout << "Entez le moyen de transport :" << endl;
+    cin.getline(moyenTransport, 25);
+
+    catalogue[iCatalogue] = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+}
+
+void AjouterTrajetCompose()
+{
+
+}
+
+void AjouterTrajet()
+{
+    int input;
+    cout << "1. Ajouter un trajet simple" << endl;
+    cout << "2. Ajouter un trajet composé" << endl;
+    cin >> input;
+    switch (input) {
+        case 1:
+            AjouterTrajetSimple();
+            break;
+        case 2:
+            AjouterTrajetCompose();
+            break;
+        default:
+            cout << "Entrée incorrecte." << endl;
+            break;
+    }
+}
+
 int main()
 {
     int input;
+    catalogue = new Trajet[100];
+    iCatalogue = 0;
     bool quitter = false;
 
     while (true)

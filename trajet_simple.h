@@ -1,5 +1,5 @@
 #include "trajet.h"
-class TrajetSimple
+class TrajetSimple : public Trajet
 {
 // Attributs
     private:
@@ -11,4 +11,6 @@ class TrajetSimple
     TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
 // Méthodes
     void ToString();
+// Destructeurs
+    ~TrajetSimple();
 };

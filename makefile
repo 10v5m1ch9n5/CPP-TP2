@@ -18,7 +18,7 @@ chainon:chainon.cpp chainon.h
 liste_chainee:liste_chainee.cpp liste_chainee.h
 	g++ -c $<
 
-trajet_simple:trajet_simple.cpp trajet_simple.h
+trajet_simple:trajet_simple.cpp trajet_simple.h trajet.h
 	g++ -c $<
 
 clean:
