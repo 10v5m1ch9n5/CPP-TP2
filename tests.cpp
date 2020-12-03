@@ -8,11 +8,7 @@ int main()
     TrajetSimple* ts2 = new TrajetSimple("Lyon Part-Dieu", "Marseille Saint-Charles", "TGV");
     TrajetSimple* ts3 = new TrajetSimple("Lyon Part-Dieu", "Gaston Berger", "Tramway");
 
-
-    TrajetCompose tc;
-    tc.AjouterTrajet(ts2);
-    tc.AjouterTrajet(ts3);
-    tc.ToString();
+    cout << ts->GetDepart() << endl;
 
     return 0;
 }
