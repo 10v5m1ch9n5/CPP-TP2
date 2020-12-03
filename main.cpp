@@ -5,11 +5,12 @@
 #include "liste_chainee.h"
 using namespace std;
 
-Trajet* catalogue;
+Trajet catalogue[100];
 int iCatalogue;
 
 void AjouterTrajetSimple()
 {
+    TrajetSimple* tsptr;
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
     char* moyenTransport = new char [25];
@@ -20,7 +21,10 @@ void AjouterTrajetSimple()
     cout << "Entez le moyen de transport :" << endl;
     cin.getline(moyenTransport, 25);
 
-    catalogue[iCatalogue] = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    tsptr = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    catalogue[iCatalogue] = *tsptr;
+    iCatalogue++;
+    delete tsptr;
 }
 
 void AjouterTrajetCompose()
@@ -47,10 +51,18 @@ void AjouterTrajet()
     }
 }
 
+void AfficherCatalogue()
+{
+    for(int i = 0; i < iCatalogue; i++)
+    {
+        cout << "Trajet n° " << i << " :" << endl;
+        catalogue[i].ToString();
+    }
+}
+
 int main()
 {
     int input;
-    catalogue = new Trajet[100];
     iCatalogue = 0;
     bool quitter = false;
 
@@ -58,7 +70,7 @@ int main()
     {
         cout << "Entrer l'action à réaliser :" << endl;
         cout << "1 : Ajouter un trajet au catalogue" << endl;
-        cout << "2 : Afficher un trajet" << endl;
+        cout << "2 : Afficher le catalogue" << endl;
         cout << "3 : Rechercher un parcours" << endl;
         cout << "4 : Quitter l'application" << endl;
 
@@ -66,10 +78,10 @@ int main()
         switch (input)
         {
             case 1:
-                cout << "Ajouter" << endl;
+                AjouterTrajet();
                 break;
             case 2:
-                cout << "Afficher" << endl;
+                AfficherCatalogue();
                 break;
             case 3:
                 cout << "Rechercher" << endl;
