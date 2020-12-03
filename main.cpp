@@ -2,6 +2,7 @@
 // Created by lucas on 29/11/2020.
 //
 #include <iostream>
+#include <cstring>
 #include "liste_chainee.h"
 using namespace std;
 
@@ -57,18 +58,18 @@ void Rechercherparcours()
 {
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
-    char* moyenTransport = new char [25];
 
     cout << "Entrez la ville de départ :" << endl;
     cin.getline(villeDepart, 25);
     cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
-    cout << "Entez le moyen de transport :" << endl;
-    cin.getline(moyenTransport, 25);
-
     for(int i = 0; i < iCatalogue; i++)
     {
-        if
+        if (strcmp(villeDepart, catalogue[i]->GetDepart()) == 0 and strcmp(villeArrivee, catalogue[i]->GetArrive()) == 0)
+        {
+            cout << "Trajet n° " << i << " :" << endl;
+            catalogue[i]->ToString();
+        }
     }
 
 
