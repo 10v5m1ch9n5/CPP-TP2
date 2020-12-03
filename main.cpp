@@ -4,7 +4,6 @@
 #include <iostream>
 #include "liste_chainee.h"
 using namespace std;
-// Commentaire bidon
 
 Trajet* catalogue[100];
 int iCatalogue;
