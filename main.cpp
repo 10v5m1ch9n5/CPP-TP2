@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <cstring>
+#include <limits>
 #include "liste_chainee.h"
 #include "trajet_compose.h"
 using namespace std;
@@ -122,6 +123,9 @@ int main()
                 break;
             default:
                 cout << "Veuillez entrer un chiffre correct." << endl;
+                // Sortir cin de son "fail state" :
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 break;
         }
 
