@@ -12,8 +12,9 @@ public:
     Trajet* GetTrajet();
     // Méthodes
     void ToString();
-    // Constructeurs
+// Constructeurs
     Chainon(Trajet* t, Chainon* suivant);
+    ~Chainon();
 private:
     Trajet* trajet;
     Chainon* suivant;

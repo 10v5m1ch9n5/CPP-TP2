@@ -5,9 +5,19 @@ using namespace std;
 
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport)
 {
+#ifdef MAP
+    cout << "MAP : Appel au constructeur de TrajetSimple" << endl;
+#endif
     this->depart = villeDepart;
     this->arrivee = villeArrivee;
     this->moyenTransport = moyenTransport;
+}
+
+TrajetSimple::~TrajetSimple() noexcept {
+#ifdef MAP
+    cout << "MAP : Appel au destructeur de TrajetSimple" << endl;
+#endif
+
 }
 
 void TrajetSimple::ToString()

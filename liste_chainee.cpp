@@ -1,15 +1,34 @@
 //
 // Created by lucas on 25/11/2020.
 //
-#define DEBUG
 
 #include "liste_chainee.h"
+#include <iostream>
+using namespace std;
 
 ListeChainee::ListeChainee()
 {
+#ifdef MAP
+    cout << "MAP : Appel au constructeur de ListeChainee" << endl;
+#endif
     this->taille = 0;
     this->premier = nullptr;
     this->dernier = nullptr;
+}
+
+ListeChainee::~ListeChainee() {
+#ifdef MAP
+    cout << "MAP : Appel au destructeur de ListeChainee" << endl;
+#endif
+    premier->ToString();
+    Chainon* courant = premier;
+    while (courant->GetSuivant() != nullptr)
+    {
+        Chainon* suivant = courant->GetSuivant();
+        delete[] courant;
+        courant = suivant;
+    }
+    delete[] courant;
 }
 
 void  ListeChainee::ToString() {
@@ -64,6 +83,6 @@ Chainon* ListeChainee::Get(int index) {
     return courant;
 }
 
-int ListeChainee::GetTaille() {
+int ListeChainee::GetTaille() const {
     return taille;
 }

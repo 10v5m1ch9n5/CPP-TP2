@@ -7,7 +7,17 @@ using namespace std;
 #include "trajet_compose.h"
 
 TrajetCompose::TrajetCompose() {
+#ifdef MAP
+    cout << "MAP : Appel au constructeur de TrajetCompose" << endl;
+#endif
     listeChainee = new ListeChainee();
+}
+
+TrajetCompose::~TrajetCompose() noexcept {
+#ifdef MAP
+    cout << "MAP : Appel au destructeur de TrajetCompose" << endl;
+#endif
+    delete[] listeChainee;
 }
 
 void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
@@ -37,8 +47,4 @@ const char * TrajetCompose::GetDepart() {
 
 void TrajetCompose::ToString() {
     cout << "De " << GetDepart() << " à " << GetArrive() << endl;
-}
-
-TrajetCompose::~TrajetCompose() {
-    delete listeChainee;
 }

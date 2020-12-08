@@ -6,6 +6,7 @@
 #include <limits>
 #include "liste_chainee.h"
 #include "trajet_compose.h"
+#include "Catalogue.h"
 using namespace std;
 
 Trajet* catalogue[100];

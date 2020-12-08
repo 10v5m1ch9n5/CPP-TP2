@@ -17,7 +17,7 @@ class TrajetSimple : public Trajet
     const char* GetDepart() override;
     const char* GetArrive() override;
 // Destructeurs
-    ~TrajetSimple() = default;
+    ~TrajetSimple();
 };
 
 #endif

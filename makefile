@@ -1,15 +1,18 @@
-CPPFLAGS = -ansi -pedantic -Wall -std=c++11
+CPPFLAGS = -ansi -pedantic -Wall -std=c++11 -DMAP
 
-main.out:main.o chainon.o liste_chainee.o trajet_simple.o
+main.out:main.o chainon.o liste_chainee.o trajet_simple.o Catalogue.o
 	g++ -o $@ $^
 
-test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o
+test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o Catalogue.o
 	g++ -o $@ $^
 
 main:main.cpp
 	g++ -c $<
 
 tests:tests.cpp
+	g++ -c $<
+
+Catalogue:Catalogue.cpp Catalogue.h
 	g++ -c $<
 
 chainon:chainon.cpp chainon.h

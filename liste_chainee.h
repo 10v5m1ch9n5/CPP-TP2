@@ -6,13 +6,14 @@ class ListeChainee
 {
 public:
 // Méthodes
-    void ToString(void);
+    void ToString();
     void Ajouter(Trajet* t);
     void Supprimer(int index);
     Chainon* Get(int index);
-    int GetTaille();
+    int GetTaille() const;
 // Constructeurs
     ListeChainee();
+    ~ListeChainee();
 protected:
     Chainon* premier;
     Chainon* dernier;

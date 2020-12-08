@@ -5,8 +5,18 @@ using namespace std;
 // Constructeurs
 Chainon::Chainon(Trajet* t, Chainon* suivant = nullptr)
 {
+#ifdef MAP
+    cout << "MAP : Appel au constructeur de Chainon" << endl;
+#endif
     this->suivant = suivant;
     this->trajet = t;
+}
+
+Chainon::~Chainon() {
+#ifdef MAP
+    cout << "MAP : Appel au destructeur de Chainon" << endl;
+#endif
+
 }
 
 // Get Set
