@@ -24,6 +24,7 @@ TrajetCompose::~TrajetCompose() noexcept {
 void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
     TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     AjouterTrajet(ts);
+    delete ts;
 }
 
 void TrajetCompose::AjouterTrajet(Trajet * t) {
@@ -32,7 +33,8 @@ void TrajetCompose::AjouterTrajet(Trajet * t) {
         cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;
         return;
     }
-    listeChainee->Ajouter(t);
+    TrajetSimple* trajetCopie = new TrajetSimple(t->GetDepart(), t->GetArrive(), "inutile");
+    listeChainee->Ajouter(trajetCopie);
 }
 
 const char * TrajetCompose::GetArrive() {
