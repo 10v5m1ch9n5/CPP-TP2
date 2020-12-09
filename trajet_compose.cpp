@@ -26,7 +26,7 @@ void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArri
     AjouterTrajet(ts);
 }
 
-void TrajetCompose::AjouterTrajet(Trajet *t) {
+void TrajetCompose::AjouterTrajet(Trajet * t) {
     if(listeChainee->GetTaille() != 0 && strcmp(t->GetDepart(), GetArrive()) != 0)
     {
         cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;

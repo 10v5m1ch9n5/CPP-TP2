@@ -17,6 +17,7 @@ Chainon::~Chainon() {
     cout << "MAP : Appel au destructeur de Chainon" << endl;
 #endif
     delete trajet;
+    delete suivant;
 }
 
 // Get Set

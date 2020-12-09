@@ -1,5 +1,6 @@
 #include "trajet_simple.h"
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -8,9 +9,12 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
 #ifdef MAP
     cout << "MAP : Appel au constructeur de TrajetSimple" << endl;
 #endif
-    this->depart = villeDepart;
-    this->arrivee = villeArrivee;
-    this->moyenTransport = moyenTransport;
+    depart = new char [25];
+    arrivee = new char [25];
+    this->moyenTransport = new char [25];
+    strcpy(depart, villeDepart);
+    strcpy(arrivee, villeArrivee);
+    strcpy(this->moyenTransport, moyenTransport);
 }
 
 TrajetSimple::~TrajetSimple() noexcept {

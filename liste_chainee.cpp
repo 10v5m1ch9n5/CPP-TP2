@@ -20,16 +20,16 @@ ListeChainee::~ListeChainee() {
 #ifdef MAP
     cout << "MAP : Appel au destructeur de ListeChainee" << endl;
 #endif
+    delete premier;
+    /*
     Chainon* courant = premier;
-
-    while (courant->GetSuivant() != nullptr)
+    while (courant != nullptr)
     {
         Chainon* suivant = courant->GetSuivant();
         delete courant;
         courant = suivant;
     }
-    delete courant;
-
+     */
 }
 
 void  ListeChainee::ToString() {

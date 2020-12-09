@@ -18,7 +18,7 @@ public:
     const char * GetArrive() override;
     void ToString() override;
     void AjouterTrajet(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
-    void AjouterTrajet(Trajet* t);
+    void AjouterTrajet(Trajet * t);
 };
 
 #endif

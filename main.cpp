@@ -2,9 +2,7 @@
 // Created by lucas on 29/11/2020.
 //
 #include <iostream>
-#include <cstring>
 #include <limits>
-#include "liste_chainee.h"
 #include "trajet_compose.h"
 #include "Catalogue.h"
 using namespace std;
@@ -26,6 +24,10 @@ void AjouterTrajetSimple()
 
     TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     catalogue.AjouterTrajet(ts);
+
+    delete[] villeDepart;
+    delete[] villeArrivee;
+    delete[] moyenTransport;
 }
 
 void AjouterTrajetCompose()
@@ -68,8 +70,13 @@ void AjouterTrajetCompose()
                 quitter = true;
                 break;
         }
+
+        delete[] villeDepart;
+        delete[] villeArrivee;
+        delete[] moyenTransport;
     }
     catalogue.AjouterTrajet(tc);
+
 }
 
 void AjouterTrajet()
@@ -101,6 +108,9 @@ void Rechercherparcours()
     cin.getline(villeArrivee, 25);
 
     catalogue.RechercherTrajet(villeDepart, villeArrivee);
+
+    delete[] villeDepart;
+    delete[] villeArrivee;
 }
 
 void AfficherCatalogue()
