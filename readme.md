@@ -1,14 +1,6 @@
 # TP C++ n°2 : Héritage - Polymorphisme
-
 # A compléter :
 
-- Classe TrajetCompose
-- Héritage de la classe abstraite Trajet
-- Destructeurs
-- ...
-
-# Travail fait :
-
-- Constructeur de la classe TrajetSimple (et méthode ToString)
-- Classe Chainon (élément de liste chainée i.e. objet TrajetSimple et pointeur vers le chainon suivant)
-- Classe ListeChainee (liste chaînée de trajets simples)
+- Perfectionner l'affichage (couleurs, moyens de transports des trajets simples composant les trajets composés)
+- Corriger les fuites de mémoire lors de la création d'un trajet composé
+- Implémenter la recherche récursive
