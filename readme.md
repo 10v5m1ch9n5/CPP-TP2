@@ -1,7 +1,7 @@
 # TP C++ n°2 : Héritage - Polymorphisme
 >## A compléter :
 >
->- Afficher les moyens de transport
+>- Nommer les trajets
 >- Perfectionner l'affichage (couleurs, moyens de transports des trajets simples composant les trajets composés)
 >- Implémenter la recherche récursive
 
