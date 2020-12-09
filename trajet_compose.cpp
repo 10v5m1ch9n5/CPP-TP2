@@ -6,17 +6,18 @@
 #include <cstring>
 using namespace std;
 #include "trajet_compose.h"
+#include "CouleurTTY.h"
 
 TrajetCompose::TrajetCompose() {
 #ifdef MAP
-    cout << "MAP : Appel au constructeur de TrajetCompose" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetCompose" << CouleurTTY(RESET) << endl;
 #endif
     listeChainee = new ListeChainee();
 }
 
 TrajetCompose::~TrajetCompose() noexcept {
 #ifdef MAP
-    cout << "MAP : Appel au destructeur de TrajetCompose" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de TrajetCompose" << CouleurTTY(RESET) << endl;
 #endif
     delete listeChainee;
 }

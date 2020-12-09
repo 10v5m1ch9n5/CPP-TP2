@@ -4,12 +4,14 @@
 
 #include "liste_chainee.h"
 #include <iostream>
+#include "CouleurTTY.h"
+#define MAP
 using namespace std;
 
 ListeChainee::ListeChainee()
 {
 #ifdef MAP
-    cout << "MAP : Appel au constructeur de ListeChainee" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de ListeChainee" << CouleurTTY(RESET) << endl;
 #endif
     this->taille = 0;
     this->premier = nullptr;
@@ -18,7 +20,7 @@ ListeChainee::ListeChainee()
 
 ListeChainee::~ListeChainee() {
 #ifdef MAP
-    cout << "MAP : Appel au destructeur de ListeChainee" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de ListeChainee" << CouleurTTY(RESET) << endl;
 #endif
     delete premier;
     /*

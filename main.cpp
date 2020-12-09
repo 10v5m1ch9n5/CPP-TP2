@@ -5,6 +5,7 @@
 #include <limits>
 #include "trajet_compose.h"
 #include "Catalogue.h"
+#include "CouleurTTY.h"
 using namespace std;
 
 Catalogue catalogue;
