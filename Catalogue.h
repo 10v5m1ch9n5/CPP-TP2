@@ -16,7 +16,7 @@ public:
     ~Catalogue();
     void AjouterTrajet(Trajet* trajet);
     void AfficherTrajets();
-    void RechercherTrajet(Trajet* trajet);
+    void RechercherTrajet(char* villeDepart, char* villeArrivee);
 };
 
 

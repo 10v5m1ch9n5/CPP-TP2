@@ -4,6 +4,7 @@
 
 #include "Catalogue.h"
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 Catalogue::Catalogue() {
@@ -26,4 +27,22 @@ void Catalogue::AjouterTrajet(Trajet* trajet) {
 
 void Catalogue::AfficherTrajets() {
     liste->ToString();
+}
+
+void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
+{
+    cout << "Résultats de la recherche :" << endl;
+    if (liste->GetTaille() == 0)
+        return;
+
+    Chainon* courant = liste->Get(0);
+    while (courant != nullptr)
+    {
+        if(strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
+        && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
+        {
+            courant->ToString();
+        }
+        courant = courant->GetSuivant();
+    }
 }

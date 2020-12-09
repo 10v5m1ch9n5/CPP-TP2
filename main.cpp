@@ -90,25 +90,12 @@ void Rechercherparcours()
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
     cin.ignore(1);
-
     cout << "Entrez la ville de départ :" << endl;
     cin.getline(villeDepart, 25);
     cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
-    /*
-    for(int i = 0; i < iCatalogue; i++)
-    {  // int a = strcmp(catalogue[i]->GetDepart())
-        if (strcmp(villeDepart, catalogue[i]->GetDepart()) == 0 && strcmp(villeArrivee, catalogue[i]->GetArrive()) == 0)
-        {
-            cout << "Trajet n° " << i << " :" << endl;
-            catalogue[i]->ToString();
-        }
-        else
-        {
-            cout << "lol" << endl;
-        }
-    }
-    */
+
+    catalogue.RechercherTrajet(villeDepart, villeArrivee);
 }
 
 void AfficherCatalogue()
