@@ -9,8 +9,7 @@
 #include "Catalogue.h"
 using namespace std;
 
-Trajet* catalogue[100];
-int iCatalogue;
+Catalogue catalogue;
 
 void AjouterTrajetSimple()
 {
@@ -25,17 +24,47 @@ void AjouterTrajetSimple()
     cout << "Entez le moyen de transport :" << endl;
     cin.getline(moyenTransport, 25);
 
-    catalogue[iCatalogue] = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
-    iCatalogue++;
-
-    delete[] villeDepart;
-    delete[] villeArrivee;
-    delete[] moyenTransport;
+    TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    catalogue.AjouterTrajet(ts);
 }
 
 void AjouterTrajetCompose()
 {
+    int input;
+    bool quitter = false;
+    TrajetCompose *tc = new TrajetCompose();
+    while (!quitter)
+    {
+        cout << "Que faire ?" << endl;
+        cout << "1. Ajouter un trajet simple personnalisé" << endl;
+        cout << "2. Ajouter un trajet existant" << endl;
+        cout << "3. Conclure l'ajout" << endl;
 
+        char *villeDepart = new char[25];
+        char *villeArrivee = new char[25];
+        char *moyenTransport = new char[25];
+
+        cin >> input;
+        switch (input)
+        {
+            case 1:
+                cin.ignore(1);
+                cout << "Entrez la ville de départ" << endl;
+                cin.getline(villeDepart, 25);
+                cout << "Entez la ville d'arrivée" << endl;
+                cin.getline(villeArrivee, 25);
+                cout << "Entez le moyen de transport" << endl;
+                cin.getline(moyenTransport, 25);
+                tc->AjouterTrajet(villeDepart, villeArrivee, moyenTransport);
+                break;
+            case 2:
+                break;
+            default:
+                quitter = true;
+                break;
+        }
+    }
+    catalogue.AjouterTrajet(tc);
 }
 
 void AjouterTrajet()
@@ -66,6 +95,7 @@ void Rechercherparcours()
     cin.getline(villeDepart, 25);
     cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
+    /*
     for(int i = 0; i < iCatalogue; i++)
     {  // int a = strcmp(catalogue[i]->GetDepart())
         if (strcmp(villeDepart, catalogue[i]->GetDepart()) == 0 && strcmp(villeArrivee, catalogue[i]->GetArrive()) == 0)
@@ -78,25 +108,17 @@ void Rechercherparcours()
             cout << "lol" << endl;
         }
     }
-
-
-
-
-
+    */
 }
+
 void AfficherCatalogue()
 {
-    for(int i = 0; i < iCatalogue; i++)
-    {
-        cout << "Trajet n° " << i << " :" << endl;
-        catalogue[i]->ToString();
-    }
+    catalogue.AfficherTrajets();
 }
 
 int main()
 {
     int input;
-    iCatalogue = 0;
     bool quitter = false;
 
     while (true)

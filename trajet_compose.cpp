@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cstring>
 using namespace std;
 #include "trajet_compose.h"
 
@@ -17,7 +18,7 @@ TrajetCompose::~TrajetCompose() noexcept {
 #ifdef MAP
     cout << "MAP : Appel au destructeur de TrajetCompose" << endl;
 #endif
-    delete[] listeChainee;
+    delete listeChainee;
 }
 
 void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
@@ -26,7 +27,8 @@ void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArri
 }
 
 void TrajetCompose::AjouterTrajet(Trajet *t) {
-    if(listeChainee->GetTaille() != 0 && t->GetDepart() != GetArrive()) {
+    if(listeChainee->GetTaille() != 0 && strcmp(t->GetDepart(), GetArrive()) != 0)
+    {
         cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;
         return;
     }

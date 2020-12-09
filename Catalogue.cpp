@@ -17,7 +17,7 @@ Catalogue::~Catalogue() {
 #ifdef MAP
     cout << "MAP : Appel au destructeur de Catalogue" << endl;
 #endif
-    delete[] liste;
+    delete liste;
 }
 
 void Catalogue::AjouterTrajet(Trajet* trajet) {

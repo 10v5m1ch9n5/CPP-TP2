@@ -17,7 +17,9 @@ TrajetSimple::~TrajetSimple() noexcept {
 #ifdef MAP
     cout << "MAP : Appel au destructeur de TrajetSimple" << endl;
 #endif
-
+    delete[] depart;
+    delete[] arrivee;
+    delete[] moyenTransport;
 }
 
 void TrajetSimple::ToString()

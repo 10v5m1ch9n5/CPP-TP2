@@ -16,7 +16,6 @@ Chainon::~Chainon() {
 #ifdef MAP
     cout << "MAP : Appel au destructeur de Chainon" << endl;
 #endif
-
 }
 
 // Get Set
