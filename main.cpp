@@ -43,6 +43,7 @@ void AjouterTrajetCompose()
         char *villeDepart = new char[25];
         char *villeArrivee = new char[25];
         char *moyenTransport = new char[25];
+        int nTrajet;
 
         cin >> input;
         switch (input)
@@ -58,6 +59,10 @@ void AjouterTrajetCompose()
                 tc->AjouterTrajet(villeDepart, villeArrivee, moyenTransport);
                 break;
             case 2:
+                cout << "Entez le numéro de votre trajet :" << endl;
+                catalogue.AfficherTrajets();
+                cin >> nTrajet;
+                tc->AjouterTrajet(catalogue.GetTrajet(nTrajet-1));
                 break;
             default:
                 quitter = true;

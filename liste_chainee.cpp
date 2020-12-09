@@ -34,13 +34,13 @@ ListeChainee::~ListeChainee() {
 
 void  ListeChainee::ToString() {
     Chainon* courant = this->premier;
-
-    while (courant->GetSuivant() != nullptr)
+    int i = 1;
+    while (courant != nullptr)
     {
-       courant->GetTrajet()->ToString();
-       courant = courant->GetSuivant();
+        cout << i++ << "- ";
+        courant->GetTrajet()->ToString();
+        courant = courant->GetSuivant();
     }
-    courant->GetTrajet()->ToString();
 }
 
 void ListeChainee::Ajouter(Trajet *t) {

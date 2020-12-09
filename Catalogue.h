@@ -17,6 +17,7 @@ public:
     void AjouterTrajet(Trajet* trajet);
     void AfficherTrajets();
     void RechercherTrajet(char* villeDepart, char* villeArrivee);
+    Trajet* GetTrajet(int n);
 };
 
 

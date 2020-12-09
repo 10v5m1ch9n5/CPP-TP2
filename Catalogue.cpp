@@ -4,6 +4,7 @@
 
 #include "Catalogue.h"
 #include <iostream>
+#include <assert.h>
 #include <cstring>
 using namespace std;
 
@@ -29,6 +30,11 @@ void Catalogue::AfficherTrajets() {
     liste->ToString();
 }
 
+Trajet * Catalogue::GetTrajet(int n) {
+    assert(n < liste->GetTaille());
+    return liste->Get(n)->GetTrajet();
+}
+
 void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
 {
     cout << "Résultats de la recherche :" << endl;
@@ -41,7 +47,7 @@ void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
         if(strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
         && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
         {
-            courant->ToString();
+            courant->GetTrajet()->ToString();
         }
         courant = courant->GetSuivant();
     }
