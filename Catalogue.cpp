@@ -4,8 +4,8 @@
 
 #include "Catalogue.h"
 #include <iostream>
-#include <assert.h>
 #include <cstring>
+#include <cassert>
 using namespace std;
 
 Catalogue::Catalogue() {

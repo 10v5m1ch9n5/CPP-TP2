@@ -29,6 +29,10 @@ trajet_simple.o:trajet_simple.cpp trajet_simple.h trajet.h
 
 debug: DEBUG = -DMAP -g
 debug: all
+
+rebuild:clean debug
+
 clean:
 	rm -vf *.o *.out *.gch
+
 all:test.out main.out

@@ -22,20 +22,45 @@ TrajetCompose::~TrajetCompose() noexcept {
     delete listeChainee;
 }
 
-void TrajetCompose::AjouterTrajet(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
-    TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
-    AjouterTrajet(ts);
-    delete ts;
-}
-
-void TrajetCompose::AjouterTrajet(Trajet * t) {
+bool TrajetCompose::AjoutPossible(Trajet *t)
+{
+    if(t == nullptr)
+        return false;
     if(listeChainee->GetTaille() != 0 && strcmp(t->GetDepart(), GetArrive()) != 0)
     {
         cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;
-        return;
+        return false;
     }
-    TrajetSimple* trajetCopie = new TrajetSimple(t->GetDepart(), t->GetArrive(), "inutile");
-    listeChainee->Ajouter(trajetCopie);
+    return true;
+}
+
+void TrajetCompose::AjouterTrajetSimple(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
+    TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    if(AjoutPossible(ts))
+        listeChainee->Ajouter(ts);
+    else
+        delete ts;
+}
+
+void TrajetCompose::AjouterTrajetSimple(TrajetSimple *ts)
+{
+    if(AjoutPossible(ts))
+    {
+        TrajetSimple *trajetCopie = new TrajetSimple(ts->GetDepart(), ts->GetArrive(), ts->GetMoyenTransport());
+        listeChainee->Ajouter(trajetCopie);
+    }
+}
+
+void TrajetCompose::AjouterTrajetCompose(TrajetCompose *tc)
+{
+    if(AjoutPossible(tc))
+        listeChainee->Ajouter(tc);
+}
+
+void TrajetCompose::AjouterTrajet(Trajet *t)
+{
+    AjouterTrajetCompose(dynamic_cast<TrajetCompose*>(t));
+    AjouterTrajetSimple(dynamic_cast<TrajetSimple*>(t));
 }
 
 const char * TrajetCompose::GetArrive() {
@@ -56,14 +81,10 @@ void TrajetCompose::ToString() {
     Chainon* courant = listeChainee->Get(0);
     while (courant->GetSuivant() != nullptr)
     {
-        cout << courant->GetTrajet()->GetDepart();
-        cout << " -> ";
-        cout << courant->GetTrajet()->GetArrive();
+        courant->GetTrajet()->ToString();
         cout << " | ";
         courant = courant->GetSuivant();
     }
-    cout << courant->GetTrajet()->GetDepart();
-    cout << " -> ";
-    cout << courant->GetTrajet()->GetArrive();
-    cout << " ]" << endl;
+    courant->GetTrajet()->ToString();
+    cout << " ]";
 }

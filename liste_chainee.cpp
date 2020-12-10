@@ -40,6 +40,7 @@ void  ListeChainee::ToString() {
     {
         cout << i++ << "- ";
         courant->GetTrajet()->ToString();
+        cout << endl;
         courant = courant->GetSuivant();
     }
 }

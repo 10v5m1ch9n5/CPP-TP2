@@ -59,7 +59,7 @@ void AjouterTrajetCompose()
                 cin.getline(villeArrivee, 25);
                 cout << "Entez le moyen de transport" << endl;
                 cin.getline(moyenTransport, 25);
-                tc->AjouterTrajet(villeDepart, villeArrivee, moyenTransport);
+                tc->AjouterTrajetSimple(villeDepart, villeArrivee, moyenTransport);
                 break;
             case 2:
                 cout << "Entez le numéro de votre trajet :" << endl;

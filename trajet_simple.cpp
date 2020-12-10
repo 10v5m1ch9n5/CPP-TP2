@@ -28,7 +28,7 @@ TrajetSimple::~TrajetSimple() noexcept {
 
 void TrajetSimple::ToString()
 {
-    cout << "De "<< this->depart << " à " << this->arrivee << " en " << this->moyenTransport << endl;
+cout << this->depart << " -> " << this->arrivee << " (" << this->moyenTransport << ")";
 }
 
 const char* TrajetSimple::GetDepart()
@@ -39,4 +39,9 @@ const char* TrajetSimple::GetDepart()
 const char* TrajetSimple::GetArrive()
 {
     return arrivee;
+}
+
+const char * TrajetSimple::GetMoyenTransport()
+{
+    return moyenTransport;
 }

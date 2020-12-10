@@ -8,6 +8,9 @@ class TrajetCompose : public Trajet
 {
 private:
     ListeChainee* listeChainee;
+    bool AjoutPossible(Trajet* t);
+    void AjouterTrajetSimple(TrajetSimple* ts);
+    void AjouterTrajetCompose(TrajetCompose* tc);
 public:
 // Constructeur
     TrajetCompose();
@@ -17,8 +20,8 @@ public:
     const char * GetDepart() override;
     const char * GetArrive() override;
     void ToString() override;
-    void AjouterTrajet(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
-    void AjouterTrajet(Trajet * t);
+    void AjouterTrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
+    void AjouterTrajet(Trajet* t);
 };
 
 #endif
