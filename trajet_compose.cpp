@@ -14,6 +14,7 @@ TrajetCompose::TrajetCompose()
     cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetCompose" << CouleurTTY(RESET) << endl;
 #endif
     listeChainee = new ListeChainee();
+    nbFoisPointe=0;
 }
 
 TrajetCompose::~TrajetCompose() noexcept

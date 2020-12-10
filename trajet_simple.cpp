@@ -16,6 +16,7 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
     strcpy(depart, villeDepart);
     strcpy(arrivee, villeArrivee);
     strcpy(this->moyenTransport, moyenTransport);
+    nbFoisPointe=0;
 }
 
 TrajetSimple::~TrajetSimple() noexcept {

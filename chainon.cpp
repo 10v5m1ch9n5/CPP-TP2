@@ -11,13 +11,17 @@ Chainon::Chainon(Trajet* t, Chainon* suivant = nullptr)
 #endif
     this->suivant = suivant;
     this->trajet = t;
+    t->NouvelleReference();
 }
 
 Chainon::~Chainon() {
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Chainon" << CouleurTTY(RESET) << endl;
 #endif
-    delete trajet;
+    if (trajet->GetNbReferences() > 1)
+        trajet->EnleverReference();
+    else
+        delete trajet;
 }
 
 // Get Set
