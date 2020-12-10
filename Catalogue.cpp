@@ -3,6 +3,7 @@
 //
 
 #include "Catalogue.h"
+#include "CouleurTTY.h"
 #include <iostream>
 #include <cstring>
 #include <cassert>
@@ -10,14 +11,14 @@ using namespace std;
 
 Catalogue::Catalogue() {
 #ifdef MAP
-    cout << "MAP : Appel au constructeur de Catalogue" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de Catalogue" << CouleurTTY(RESET) << endl;
 #endif
     liste = new ListeChainee();
 }
 
 Catalogue::~Catalogue() {
 #ifdef MAP
-    cout << "MAP : Appel au destructeur de Catalogue" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Catalogue" << CouleurTTY(RESET) << endl;
 #endif
     delete liste;
 }

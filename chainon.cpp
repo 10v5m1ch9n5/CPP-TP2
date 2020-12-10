@@ -1,4 +1,5 @@
 #include "chainon.h"
+#include "CouleurTTY.h"
 #include <iostream>
 using namespace std;
 
@@ -6,7 +7,7 @@ using namespace std;
 Chainon::Chainon(Trajet* t, Chainon* suivant = nullptr)
 {
 #ifdef MAP
-    cout << "MAP : Appel au constructeur de Chainon" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de Chainon" << CouleurTTY(RESET) << endl;
 #endif
     this->suivant = suivant;
     this->trajet = t;
@@ -14,7 +15,7 @@ Chainon::Chainon(Trajet* t, Chainon* suivant = nullptr)
 
 Chainon::~Chainon() {
 #ifdef MAP
-    cout << "MAP : Appel au destructeur de Chainon" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Chainon" << CouleurTTY(RESET) << endl;
 #endif
     delete trajet;
     delete suivant;

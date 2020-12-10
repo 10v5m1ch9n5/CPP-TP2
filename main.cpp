@@ -148,7 +148,7 @@ int main()
                 quitter = true;
                 break;
             default:
-                cout << "Veuillez entrer un chiffre correct." << endl;
+                cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
                 // Sortir cin de son "fail state" :
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

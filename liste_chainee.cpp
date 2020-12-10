@@ -36,6 +36,7 @@ ListeChainee::~ListeChainee() {
 void  ListeChainee::ToString() {
     Chainon* courant = this->premier;
     int i = 1;
+    cout << CouleurTTY(BLEU);
     while (courant != nullptr)
     {
         cout << i++ << "- ";
@@ -43,6 +44,7 @@ void  ListeChainee::ToString() {
         cout << endl;
         courant = courant->GetSuivant();
     }
+    cout << CouleurTTY(RESET);
 }
 
 void ListeChainee::Ajouter(Trajet *t) {

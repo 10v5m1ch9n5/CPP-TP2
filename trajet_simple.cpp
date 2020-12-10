@@ -1,4 +1,5 @@
 #include "trajet_simple.h"
+#include "CouleurTTY.h"
 #include <iostream>
 #include <cstring>
 
@@ -7,7 +8,7 @@ using namespace std;
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport)
 {
 #ifdef MAP
-    cout << "MAP : Appel au constructeur de TrajetSimple" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetSimple" << CouleurTTY(RESET) << endl;
 #endif
     depart = new char [25];
     arrivee = new char [25];
@@ -19,7 +20,7 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
 
 TrajetSimple::~TrajetSimple() noexcept {
 #ifdef MAP
-    cout << "MAP : Appel au destructeur de TrajetSimple" << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de TrajetSimple" << CouleurTTY(RESET) << endl;
 #endif
     delete[] depart;
     delete[] arrivee;

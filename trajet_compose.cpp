@@ -28,7 +28,7 @@ bool TrajetCompose::AjoutPossible(Trajet *t)
         return false;
     if(listeChainee->GetTaille() != 0 && strcmp(t->GetDepart(), GetArrive()) != 0)
     {
-        cout <<  "Ville de départ différente de la ville d'arrivée du trajet" << endl;
+        cout << CouleurTTY(ROUGE) <<  "Ville de départ différente de la ville d'arrivée du trajet" << CouleurTTY(RESET) << endl;
         return false;
     }
     return true;
