@@ -2,7 +2,7 @@
 ## A faire :
 
 - Trouver une solution sans `dynamic_cast` pour l'ajout d'un trajet dans un `TrajetCompose`
-- Supprimer intelligement les trajets via la méthode `Supprimer` de `ListeChainee`
+- Supprimer intelligement les trajets via la méthode `Supprimer` de `ListeChainee` ou en créant une deuxième liste chainée contenant uniquement les trajets à supprimer dans `TrajetCompose`
 - Perfectionner l'affichage (couleurs, moyens de transports des trajets simples composant les trajets composés)
 - Implémenter la recherche récursive
 
