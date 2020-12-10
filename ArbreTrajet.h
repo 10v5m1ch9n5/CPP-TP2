@@ -6,10 +6,12 @@
 #ifndef C_TP2_ARBRETRAJET_H
 #define C_TP2_ARBRETRAJET_H
 
+#include "Noeud.h"
 
 class ArbreTrajet
 {
-
+private:
+    Noeud* racine;
 };
 
 
