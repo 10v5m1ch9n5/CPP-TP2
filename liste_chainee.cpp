@@ -22,16 +22,8 @@ ListeChainee::~ListeChainee()
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de ListeChainee" << CouleurTTY(RESET) << endl;
 #endif
-    delete premier;
-    /*
-    Chainon* courant = premier;
-    while (courant != nullptr)
-    {
-        Chainon* suivant = courant->GetSuivant();
-        delete courant;
-        courant = suivant;
-    }
-     */
+    while (premier != nullptr)
+        Supprimer(0);
 }
 
 void  ListeChainee::ToString()

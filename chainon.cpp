@@ -18,7 +18,6 @@ Chainon::~Chainon() {
     cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Chainon" << CouleurTTY(RESET) << endl;
 #endif
     delete trajet;
-    delete suivant;
 }
 
 // Get Set
