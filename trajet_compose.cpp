@@ -8,14 +8,16 @@ using namespace std;
 #include "trajet_compose.h"
 #include "CouleurTTY.h"
 
-TrajetCompose::TrajetCompose() {
+TrajetCompose::TrajetCompose()
+{
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetCompose" << CouleurTTY(RESET) << endl;
 #endif
     listeChainee = new ListeChainee();
 }
 
-TrajetCompose::~TrajetCompose() noexcept {
+TrajetCompose::~TrajetCompose() noexcept
+{
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de TrajetCompose" << CouleurTTY(RESET) << endl;
 #endif
@@ -28,13 +30,14 @@ bool TrajetCompose::AjoutPossible(Trajet *t)
         return false;
     if(listeChainee->GetTaille() != 0 && strcmp(t->GetDepart(), GetArrive()) != 0)
     {
-        cout << CouleurTTY(ROUGE) <<  "Ville de départ différente de la ville d'arrivée du trajet" << CouleurTTY(RESET) << endl;
+        cout << CouleurTTY(ROUGE) <<  "Ville de départ différente de la ville d'arrivée du trajet. Annulation." << CouleurTTY(RESET) << endl;
         return false;
     }
     return true;
 }
 
-void TrajetCompose::AjouterTrajetSimple(const char *villeDepart, const char *villeArrivee, const char *moyenTransport) {
+void TrajetCompose::AjouterTrajetSimple(const char *villeDepart, const char *villeArrivee, const char *moyenTransport)
+{
     TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     if(AjoutPossible(ts))
         listeChainee->Ajouter(ts);
@@ -63,19 +66,22 @@ void TrajetCompose::AjouterTrajet(Trajet *t)
     AjouterTrajetSimple(dynamic_cast<TrajetSimple*>(t));
 }
 
-const char * TrajetCompose::GetArrive() {
+const char * TrajetCompose::GetArrive()
+{
     if(listeChainee->GetTaille() == 0)
         return nullptr;
     return listeChainee->Get(listeChainee->GetTaille()-1)->GetTrajet()->GetArrive();
 }
 
-const char * TrajetCompose::GetDepart() {
+const char * TrajetCompose::GetDepart()
+{
     if(listeChainee->GetTaille() == 0)
         return nullptr;
     return listeChainee->Get(0)->GetTrajet()->GetDepart();
 }
 
-void TrajetCompose::ToString() {
+void TrajetCompose::ToString()
+{
     cout << "De " << GetDepart() << " à " << GetArrive();
     cout << " [ ";
     Chainon* courant = listeChainee->Get(0);

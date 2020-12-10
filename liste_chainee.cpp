@@ -17,7 +17,8 @@ ListeChainee::ListeChainee()
     this->dernier = nullptr;
 }
 
-ListeChainee::~ListeChainee() {
+ListeChainee::~ListeChainee()
+{
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de ListeChainee" << CouleurTTY(RESET) << endl;
 #endif
@@ -33,7 +34,8 @@ ListeChainee::~ListeChainee() {
      */
 }
 
-void  ListeChainee::ToString() {
+void  ListeChainee::ToString()
+{
     Chainon* courant = this->premier;
     int i = 1;
     cout << CouleurTTY(BLEU);
@@ -47,7 +49,8 @@ void  ListeChainee::ToString() {
     cout << CouleurTTY(RESET);
 }
 
-void ListeChainee::Ajouter(Trajet *t) {
+void ListeChainee::Ajouter(Trajet *t)
+{
     Chainon* nouveau = new Chainon(t, nullptr);
     if (taille == 0) {
         this->premier = this->dernier = nouveau;
@@ -59,7 +62,8 @@ void ListeChainee::Ajouter(Trajet *t) {
     taille++;
 }
 
-void ListeChainee::Supprimer(int index) {
+void ListeChainee::Supprimer(int index)
+{
     Chainon* courant = this->premier;
     if (index == 0)
     {
@@ -78,7 +82,8 @@ void ListeChainee::Supprimer(int index) {
     delete courant;
 }
 
-Chainon* ListeChainee::Get(int index) {
+Chainon* ListeChainee::Get(int index)
+{
     Chainon* courant = this->premier;
     for (int i = 0; i < index; i++)
     {
@@ -87,6 +92,7 @@ Chainon* ListeChainee::Get(int index) {
     return courant;
 }
 
-int ListeChainee::GetTaille() const {
+int ListeChainee::GetTaille() const
+{
     return taille;
 }
