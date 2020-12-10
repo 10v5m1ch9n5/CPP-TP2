@@ -8,7 +8,7 @@ using namespace std;
 #include "trajet_compose.h"
 #include "CouleurTTY.h"
 
-TrajetCompose::TrajetCompose()
+TrajetCompose::TrajetCompose() : Trajet(0)
 {
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetCompose" << CouleurTTY(RESET) << endl;

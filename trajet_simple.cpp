@@ -5,7 +5,7 @@
 
 using namespace std;
 
-TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport)
+TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport) : Trajet(0)
 {
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de TrajetSimple" << CouleurTTY(RESET) << endl;
@@ -16,7 +16,6 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
     strcpy(depart, villeDepart);
     strcpy(arrivee, villeArrivee);
     strcpy(this->moyenTransport, moyenTransport);
-    nbFoisPointe=0;
 }
 
 TrajetSimple::~TrajetSimple() noexcept {
