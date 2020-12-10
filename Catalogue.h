@@ -17,6 +17,7 @@ public:
     void AjouterTrajet(Trajet* trajet);
     void AfficherTrajets();
     void RechercherTrajet(char* villeDepart, char* villeArrivee);
+    ListeChainee * RechercheRecursive(const char* villeDepart, const char* villeArrivee);
     Trajet* GetTrajet(int n);
 };
 

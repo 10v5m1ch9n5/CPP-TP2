@@ -83,7 +83,7 @@ const char * TrajetCompose::GetDepart()
 
 void TrajetCompose::ToString()
 {
-    cout << "De " << GetDepart() << " à " << GetArrive();
+    cout << GetDepart() << " -> " << GetArrive();
     cout << " [ ";
     Chainon* courant = listeChainee->Get(0);
     while (courant->GetSuivant() != nullptr)
