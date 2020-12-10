@@ -7,10 +7,10 @@ public:
     virtual const char* GetDepart() {return nullptr;};
     virtual const char* GetArrive() {return nullptr;};
     virtual ~Trajet() = default;
+// Permet de gérer la destruction
     inline void NouvelleReference(){nbFoisPointe++;};
     inline int GetNbReferences() const{return nbFoisPointe;};
     inline void EnleverReference(){nbFoisPointe--;};
-    // inline Trajet(){nbFoisPointe=0;};
 protected:
     int nbFoisPointe;
 };
