@@ -7,26 +7,26 @@ test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o Cata
 	g++ -o $@ $^
 
 main.o:main.cpp CouleurTTY.h
-	g++ -c $^
+	g++ -c $(CPPFLAGS) $^
 
-tests:tests.cpp
-	g++ -c $<
+tests.o:tests.cpp
+	g++ -c $(CPPFLAGS) $<
 
 trajet_compose.o:trajet_compose.cpp trajet_compose.h CouleurTTY.h
-	g++ -c $^
+	g++ -c $(CPPFLAGS) $^
 
-Catalogue:Catalogue.cpp Catalogue.h
-	g++ -c $<
+Catalogue.o:Catalogue.cpp Catalogue.h
+	g++ -c $(CPPFLAGS) $<
 
-chainon:chainon.cpp chainon.h
-	g++ -c $<
+chainon.o:chainon.cpp chainon.h
+	g++ -c $(CPPFLAGS) $<
 
 liste_chainee.o:liste_chainee.cpp liste_chainee.h CouleurTTY.h
-	g++ -c $^
+	g++ -c $(CPPFLAGS) $^
 
-trajet_simple:trajet_simple.cpp trajet_simple.h trajet.h
-	g++ -c $<
+trajet_simple.o:trajet_simple.cpp trajet_simple.h trajet.h
+	g++ -c $(CPPFLAGS) $<
 
 clean:
-	rm -f *.o *.out
+	rm -vf *.o *.out
 all:test.out main.out

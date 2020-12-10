@@ -5,7 +5,6 @@
 #include "liste_chainee.h"
 #include <iostream>
 #include "CouleurTTY.h"
-#define MAP
 using namespace std;
 
 ListeChainee::ListeChainee()
