@@ -12,6 +12,15 @@ class ListeChaineeGenerique
 {
 private:
     ChainonGenerique<T>* premier;
+    int taille;
+public:
+    ListeChaineeGenerique();
+    ~ListeChaineeGenerique();
+    void Ajouter(T* element);
+    T* Get(int index);
+    void Supprimer(int index);
+    void SupprimerPremier();
+    int GetTaille();
 };
 
 

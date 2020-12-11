@@ -7,17 +7,19 @@
 
 #include "trajet.h"
 #include "liste_chainee.h"
+#include "Noeud.h"
 
 class Catalogue {
 private:
     ListeChainee* liste;
+    void RechercheRecursive(const char * villeDepart, const char * villeArrivee, Noeud* noeud);
 public:
     Catalogue();
     ~Catalogue();
     void AjouterTrajet(Trajet* trajet);
     void AfficherTrajets();
     void RechercherTrajet(char* villeDepart, char* villeArrivee);
-    ListeChainee * RechercheRecursive(const char* villeDepart, const char* villeArrivee);
+    void RechercheAvancee(const char * villeDepart, const char* villeArrivee);
     Trajet* GetTrajet(int n);
 };
 

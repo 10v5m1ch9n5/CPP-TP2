@@ -11,6 +11,13 @@ class ChainonGenerique
 private:
     T* element;
     ChainonGenerique<T>* suivant;
+public:
+    ChainonGenerique(T* element = nullptr, ChainonGenerique<T>* suivant = nullptr);
+    ~ChainonGenerique();
+    ChainonGenerique<T>* GetSuivant();
+    T* GetElement();
+    void SetSuivant(ChainonGenerique<T>* suivant);
+    void SetElement(T* element);
 };
 
 

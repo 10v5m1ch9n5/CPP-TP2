@@ -7,16 +7,22 @@
 #define C_TP2_NOEUD_H
 
 #include "trajet.h"
+#include "ListeChaineeGenerique.h"
 
 class Noeud
 {
 private:
-    int nbEnfants;
-    Noeud** enfants;
+    ListeChaineeGenerique<Noeud>* enfants;
     Trajet* trajet;
+    Noeud* parent;
 public:
-    Noeud(Trajet* t);
-    AjouterEnfant(Noeud* );
+    Noeud(Trajet* t, Noeud* parent= nullptr);
+    ~Noeud();
+    void AjouterEnfant(Noeud* noeud);
+    int GetNbEnfants();
+    Trajet* GetTrajet();
+    bool EstRacine();
+    void SetParent(Noeud* p);
 };
 
 

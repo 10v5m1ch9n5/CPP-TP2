@@ -11,7 +11,7 @@
 class ArbreTrajet
 {
 private:
-    Noeud* racine;
+    ListeChaineeGenerique<Noeud> racines;
 };
 
 

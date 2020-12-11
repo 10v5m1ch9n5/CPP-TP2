@@ -1,9 +1,12 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "modernize-use-auto"
 //
 // Created by lucas on 08/12/2020.
 //
 
 #include "Catalogue.h"
 #include "CouleurTTY.h"
+#include "ListeChaineeGenerique.h"
 #include <iostream>
 #include <cstring>
 #include <cassert>
@@ -54,24 +57,42 @@ void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
     }
 }
 
-ListeChainee* Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee)
+void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee, Noeud *noeud)
 {
-    ListeChainee* resultats = new ListeChainee();
+    cout << "Recherche de " << villeDepart << " à " << villeArrivee << endl;
+    if (strcmp(villeDepart, villeArrivee) == 0)
+        return;
 
-    if(strcmp(villeDepart, villeArrivee) != 0)
+    Chainon* c = liste->Get(0);
+    while (c != nullptr)
     {
-        Chainon* c = liste->Get(0);
-        while (c != nullptr)
+        Trajet* t = c->GetTrajet();
+        if (strcmp(t->GetDepart(), villeDepart) == 0)
         {
-            if (strcmp(c->GetTrajet()->GetDepart(), villeDepart) == 0)
-            {
-                resultats->Ajouter(c->GetTrajet());
-                RechercheRecursive(c->GetTrajet()->GetArrive(), villeArrivee);
-            }
+            Noeud* nouveau = new Noeud(t);
+            noeud->AjouterEnfant(nouveau);
+            RechercheRecursive(t->GetArrive(), villeArrivee, nouveau);
         }
+        c = c->GetSuivant();
     }
-    else
-    {
-        return nullptr;
-    }
+    delete noeud;
 }
+
+void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArrivee)
+{
+    ListeChaineeGenerique<Noeud>* racines = new ListeChaineeGenerique<Noeud>();
+    Chainon* c = liste->Get(0);
+    while (c != nullptr)
+    {
+        Trajet* t = c->GetTrajet();
+        if (strcmp(villeDepart, t->GetDepart()) == 0)
+        {
+            Noeud* nouveau = new Noeud(t);
+            racines->Ajouter(nouveau);
+            RechercheRecursive(t->GetArrive(), villeArrivee, nouveau);
+        }
+        c = c->GetSuivant();
+    }
+
+}
+#pragma clang diagnostic pop
