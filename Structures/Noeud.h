@@ -6,7 +6,7 @@
 #ifndef C_TP2_NOEUD_H
 #define C_TP2_NOEUD_H
 
-#include "trajet.h"
+#include "structures_header.h"
 
 class Noeud
 {

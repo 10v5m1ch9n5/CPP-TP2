@@ -54,24 +54,12 @@ void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
     }
 }
 
-ListeChainee* Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee)
+void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee, Noeud *noeud)
 {
-    ListeChainee* resultats = new ListeChainee();
 
-    if(strcmp(villeDepart, villeArrivee) != 0)
-    {
-        Chainon* c = liste->Get(0);
-        while (c != nullptr)
-        {
-            if (strcmp(c->GetTrajet()->GetDepart(), villeDepart) == 0)
-            {
-                resultats->Ajouter(c->GetTrajet());
-                RechercheRecursive(c->GetTrajet()->GetArrive(), villeArrivee);
-            }
-        }
-    }
-    else
-    {
-        return nullptr;
-    }
+}
+
+void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArrivee)
+{
+
 }

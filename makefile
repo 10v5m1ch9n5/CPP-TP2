@@ -1,9 +1,20 @@
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(DEBUG)
+export CPPFLAGS
+TOUT = $(wildcard *.o)
+TEST = $(TOUT) Structures
+UTIL = Utilitaires/CouleurTTY.h
+	
+test.out: $(TEST)
+	g++ -o $@ $^
+
+Structures:
+	$(MAKE) -C $@
+
 
 main.out:main.o chainon.o liste_chainee.o trajet_simple.o Catalogue.o trajet_compose.o
 	g++ -o $@ $^
 
-test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o Catalogue.o
+# test.out:tests.o chainon.o trajet_simple.o liste_chainee.o trajet_compose.o Catalogue.o
 	g++ -o $@ $^
 
 main.o:main.cpp CouleurTTY.h
