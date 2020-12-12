@@ -11,7 +11,7 @@ template<typename T>
 ChainonGenerique<T>::ChainonGenerique(T *element, ChainonGenerique<T> *suivant)
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au constructeur de ChainonGenerique" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de ChainonGenerique" << CouleurTTY(RESET) << endl;
 #endif
     this->element = element;
     this->suivant = suivant;
@@ -21,8 +21,9 @@ template<typename T>
 ChainonGenerique<T>::~ChainonGenerique<T>()
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au destructeur de ChainonGenerique" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de ChainonGenerique" << CouleurTTY(RESET) << endl;
 #endif
+    delete element;
 }
 
 template<typename T>
