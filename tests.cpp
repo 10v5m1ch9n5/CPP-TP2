@@ -14,10 +14,6 @@ int main()
     TrajetSimple* ts7 = new TrajetSimple("Chatelet Les Halles", "Paris Gare de Lyon", "Metro 14");
     TrajetSimple* ts8 = new TrajetSimple("Paris Gare de Lyon", "Marseille Saint-Charles", "TGV");
 
-    TrajetCompose* tc1 = new TrajetCompose();
-    tc1->AjouterTrajet(ts5);
-    tc1->AjouterTrajet(ts6);
-
     Catalogue catalogue;
 
     catalogue.AjouterTrajet(ts);
@@ -27,7 +23,6 @@ int main()
     catalogue.AjouterTrajet(ts6);
     catalogue.AjouterTrajet(ts7);
     catalogue.AjouterTrajet(ts8);
-    catalogue.AjouterTrajet(tc1);
     catalogue.AfficherTrajets();
 
     cout << CouleurTTY(CYAN) << "RESULTATS RECHERCHE RECURSIVE" << CouleurTTY(RESET) << endl;

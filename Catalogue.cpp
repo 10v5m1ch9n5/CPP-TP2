@@ -180,5 +180,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
         if (iRacine++ == racines->GetTaille()-1)
             break;
     }
+
+    delete racines;
 }
 #pragma clang diagnostic pop
