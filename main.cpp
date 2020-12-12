@@ -114,7 +114,7 @@ void Rechercherparcours()
     int input;
     cin >> input;
 
-    cout << CouleurTTY(CYAN) << "RESULTATS RECHERCHE RECURSIVE" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(CYAN) << "RESULTATS DE LA RECHERCHE" << CouleurTTY(RESET) << endl;
     if (input == 1)
         catalogue.RechercherTrajet(villeDepart, villeArrivee);
     else
