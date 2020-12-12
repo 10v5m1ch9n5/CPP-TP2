@@ -35,10 +35,10 @@ ChainonGenerique.o:ChainonGenerique.cpp ChainonGenerique.h
 
 # ---------------------------------REGLES PHONY---------------------------------
 debug: CPPFLAGS += -DMAP -g
-debug: all
+debug: main.out
 rebuild:clean debug
 clean:
 	@rm -vf *.o *.out *.gch
 
-all:test.out
+all:test.out main.out
 .PHONY: all clean rebuild debug

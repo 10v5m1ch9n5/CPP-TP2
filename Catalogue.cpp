@@ -1,5 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "modernize-use-auto"
 //
 // Created by lucas on 08/12/2020.
 //
@@ -183,4 +181,3 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
     delete racines;
 }
-#pragma clang diagnostic pop
