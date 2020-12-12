@@ -9,7 +9,7 @@
 Noeud::Noeud(Trajet *t)
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au constructeur de Noeud" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de Noeud" << CouleurTTY(RESET) << endl;
 #endif
     trajet = t;
     t->NouvelleReference();
@@ -21,7 +21,7 @@ Noeud::Noeud(Trajet *t)
 Noeud::~Noeud()
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au destructeur de Noeud" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Noeud" << CouleurTTY(RESET) << endl;
 #endif
     delete enfants;
     if (trajet->GetNbReferences() > 1)
