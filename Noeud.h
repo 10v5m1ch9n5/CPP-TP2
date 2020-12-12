@@ -15,14 +15,21 @@ private:
     ListeChaineeGenerique<Noeud>* enfants;
     Trajet* trajet;
     Noeud* parent;
+    int indice;
+    void ActualiserIndicesEnfants();
 public:
-    Noeud(Trajet* t, Noeud* parent= nullptr);
+    explicit Noeud(Trajet* t);
     ~Noeud();
     void AjouterEnfant(Noeud* noeud);
+    void SupprimerEnfant(int index);
     int GetNbEnfants();
     Trajet* GetTrajet();
     bool EstRacine();
     void SetParent(Noeud* p);
+    void SetIndice(int i);
+    int GetIndice();
+    void DetruireCascade(int i = 0);
+    Noeud* GetEnfant(int i);
 };
 
 

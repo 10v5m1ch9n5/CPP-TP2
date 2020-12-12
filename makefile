@@ -1,7 +1,7 @@
 # ================================= VARIABLES =================================
 
 #--------------------------- Parametres compilateurs ---------------------------
-CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(DEBUG)
+CPPFLAGS = -ansi -pedantic -Wall -std=c++11
 CC = g++
 
 #------------------------------- Fichiers source -------------------------------
@@ -38,11 +38,11 @@ ChainonGenerique.o:ChainonGenerique.cpp ChainonGenerique.h
 ArbreTrajet.o:ArbreTrajet.cpp ArbreTrajet.h
 
 # ---------------------------------REGLES PHONY---------------------------------
-debug: DEBUG = -DMAP -g
+debug: CPPFLAGS += -DMAP -g
 debug: all
 rebuild:clean debug
 clean:
-	rm -vf *.o *.out *.gch
+	@rm -vf *.o *.out *.gch
 
-all:test.out main.out
+all:test.out
 .PHONY: all clean rebuild debug

@@ -53,6 +53,8 @@ void ListeChaineeGenerique<T>::Ajouter(T* element)
 template<typename T>
 T * ListeChaineeGenerique<T>::Get(int index)
 {
+    if (GetTaille() == 0)
+        return nullptr;
     ChainonGenerique<T>* courant = premier;
     for (int i = 0; i < index && i < taille ; i++)
     {
@@ -64,12 +66,31 @@ T * ListeChaineeGenerique<T>::Get(int index)
 template<typename T>
 void ListeChaineeGenerique<T>::Supprimer(int index)
 {
-    cout << CouleurTTY(ROUGE) << "Méthode Supprimer non implémentée" << CouleurTTY(RESET) << endl;
+    if (index == 0)
+    {
+        SupprimerPremier();
+        return;
+    }
+
+    ChainonGenerique<T>* courant = premier;
+    ChainonGenerique<T>* precedent;
+
+    for (int i = 0; i < index; ++i)
+    {
+        precedent = courant;
+        courant = courant->GetSuivant();
+    }
+
+    precedent->SetSuivant(courant->GetSuivant());
+    delete courant;
+    taille--;
 }
 
 template<typename T>
 void ListeChaineeGenerique<T>::SupprimerPremier()
 {
+    if (taille == 0)
+        return;
     ChainonGenerique<T>* suivant = premier->GetSuivant();
     delete premier;
     premier = suivant;

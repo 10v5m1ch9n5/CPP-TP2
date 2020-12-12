@@ -6,14 +6,15 @@
 #include "CouleurTTY.h"
 #include <iostream>
 
-Noeud::Noeud(Trajet *t, Noeud* parent)
+Noeud::Noeud(Trajet *t)
 {
 #ifdef MAP
     cout << CouleurTTY(JAUNE) << "Appel au constructeur de Noeud" << CouleurTTY(RESET) << endl;
 #endif
     trajet = t;
     enfants = new ListeChaineeGenerique<Noeud>();
-    this->parent = parent;
+    indice = -1;
+    parent = nullptr;
 }
 
 Noeud::~Noeud()
@@ -27,7 +28,14 @@ Noeud::~Noeud()
 void Noeud::AjouterEnfant(Noeud *noeud)
 {
     noeud->SetParent(this);
+    noeud->SetIndice(enfants->GetTaille());
     enfants->Ajouter(noeud);
+}
+
+void Noeud::SupprimerEnfant(int index)
+{
+    enfants->Supprimer(index);
+    ActualiserIndicesEnfants();
 }
 
 inline int Noeud::GetNbEnfants()
@@ -48,4 +56,36 @@ bool Noeud::EstRacine()
 void Noeud::SetParent(Noeud *p)
 {
     parent = p;
+}
+
+inline int Noeud::GetIndice()
+{
+    return indice;
+}
+
+inline void Noeud::SetIndice(int i)
+{
+    this->indice = i;
+}
+
+void Noeud::DetruireCascade(int i)
+{
+    SupprimerEnfant(i);
+    if (EstRacine())
+        return;
+    if (GetNbEnfants() == 0)
+        parent->DetruireCascade(GetIndice());
+}
+
+Noeud * Noeud::GetEnfant(int i)
+{
+    return enfants->Get(i);
+}
+
+void Noeud::ActualiserIndicesEnfants()
+{
+    for (int i = 0 ; i < enfants->GetTaille(); i++)
+    {
+        enfants->Get(i)->SetIndice(i);
+    }
 }
