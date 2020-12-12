@@ -12,6 +12,7 @@ Noeud::Noeud(Trajet *t)
     cout << CouleurTTY(JAUNE) << "Appel au constructeur de Noeud" << CouleurTTY(RESET) << endl;
 #endif
     trajet = t;
+    t->NouvelleReference();
     enfants = new ListeChaineeGenerique<Noeud>();
     indice = -1;
     parent = nullptr;
@@ -23,6 +24,10 @@ Noeud::~Noeud()
     cout << CouleurTTY(JAUNE) << "Appel au destructeur de Noeud" << CouleurTTY(RESET) << endl;
 #endif
     delete enfants;
+    if (trajet->GetNbReferences() > 1)
+        trajet->EnleverReference();
+    else
+        delete trajet;
 }
 
 void Noeud::AjouterEnfant(Noeud *noeud)
