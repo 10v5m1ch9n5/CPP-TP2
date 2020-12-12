@@ -12,7 +12,7 @@ template<typename T>
 ListeChaineeGenerique<T>::ListeChaineeGenerique()
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au constructeur de ListeChaineeGenerique" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de ListeChaineeGenerique" << CouleurTTY(RESET) << endl;
 #endif
     premier = nullptr;
     taille = 0;
@@ -22,7 +22,7 @@ template<typename T>
 ListeChaineeGenerique<T>::~ListeChaineeGenerique<T>()
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "Appel au constructeur de ListeChaineeGenerique" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de ListeChaineeGenerique" << CouleurTTY(RESET) << endl;
 #endif
     while (premier != nullptr)
     {
