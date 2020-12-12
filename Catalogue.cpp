@@ -94,7 +94,9 @@ void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArr
 
 void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArrivee)
 {
+#ifdef DEBUG
     cout << "Construction de l'arbre..." << endl;
+#endif
     // Construire un arbre avec toutes les possibilités
     ListeChaineeGenerique<Noeud>* racines = new ListeChaineeGenerique<Noeud>();
     Chainon* c = liste->Get(0);
@@ -105,14 +107,18 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
         {
             Noeud* nouveau = new Noeud(t);
             racines->Ajouter(nouveau);
+#ifdef DEBUG
             cout << "-> Nouvelle racine (" << racines->GetTaille()-1 << ")" << endl;
+#endif
             RechercheRecursive(t->GetArrive(), villeArrivee, nouveau);
         }
         c = c->GetSuivant();
     }
 
 
+#ifdef DEBUG
     cout << "Nettoyage des racines..." << endl;
+#endif
     // Enlever les racines qui n'aboutissent à aucun résultat
     int i = 0;
     while (i < racines->GetTaille())
@@ -126,7 +132,9 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
                 cout << CouleurTTY(RESET) << endl;
             }
             racines->Supprimer(i);
+#ifdef DEBUG
             cout << "-> Racine supprimée" << endl;
+#endif
             i = 0;
         }
         else
@@ -136,14 +144,18 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
     }
 
 
+#ifdef DEBUG
     cout << "Affichage des résultats..." << endl;
+#endif
     // Afficher les résultats
     ListeChainee resultats;
     int iRacine = 0;
     while (racines->GetTaille() > 0) // Parcours de chaque racine
     {
         Noeud* racineCourante = racines->Get(iRacine);
+#ifdef DEBUG
         cout << "Racine n° " << iRacine << endl;
+#endif
         while (racineCourante->GetNbEnfants() != 0) // Parcours de tous les trajets possibles dans la racine
         {
             TrajetCompose resultat;
