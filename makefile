@@ -14,10 +14,7 @@ TEST = ListeChaineeGenerique.o Noeud.o trajet_compose.o  \
 # ================================ REGLES MAKE ================================
 
 # -------------------------------- EXECUTABLES --------------------------------
-test_liste_chainee.out:test_liste_chainee.o $(TEST) 
-	g++ -o $@ $^
-
-main.out:main.o chainon.o liste_chainee.o trajet_simple.o Catalogue.o trajet_compose.o
+main.out:main.o $(TEST)
 	g++ -o $@ $^
 
 test.out:tests.o $(TEST)
@@ -35,7 +32,6 @@ trajet_simple.o:trajet_simple.cpp trajet_simple.h trajet.h
 Noeud.o:Noeud.cpp Noeud.h CouleurTTY.h
 ListeChaineeGenerique.o:ListeChaineeGenerique.cpp ListeChaineeGenerique.h
 ChainonGenerique.o:ChainonGenerique.cpp ChainonGenerique.h
-ArbreTrajet.o:ArbreTrajet.cpp ArbreTrajet.h
 
 # ---------------------------------REGLES PHONY---------------------------------
 debug: CPPFLAGS += -DMAP -g
