@@ -107,8 +107,18 @@ void Rechercherparcours()
     cin.getline(villeDepart, 25);
     cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
+    cout << "Choisissez votre mode de recherche :" << endl;
+    cout << "1. Recherche simple" << endl;
+    cout << "2. Recherche avancée (avec composition automatique)" << endl;
 
-    catalogue.RechercherTrajet(villeDepart, villeArrivee);
+    int input;
+    cin >> input;
+
+    cout << CouleurTTY(CYAN) << "RESULTATS RECHERCHE RECURSIVE" << CouleurTTY(RESET) << endl;
+    if (input == 1)
+        catalogue.RechercherTrajet(villeDepart, villeArrivee);
+    else
+        catalogue.RechercheAvancee(villeDepart, villeArrivee);
 
     delete[] villeDepart;
     delete[] villeArrivee;
