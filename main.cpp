@@ -94,7 +94,9 @@ void AjouterTrajet()
             AjouterTrajetCompose();
             break;
         default:
-            cout << "Entrée incorrecte." << endl;
+            cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
     }
 }
@@ -114,11 +116,12 @@ void Rechercherparcours()
     int input;
     cin >> input;
 
-    cout << CouleurTTY(CYAN) << "RESULTATS DE LA RECHERCHE" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(CYAN) << " --- RESULTATS DE LA RECHERCHE --- " << CouleurTTY(RESET) << endl;
     if (input == 1)
         catalogue.RechercherTrajet(villeDepart, villeArrivee);
     else
         catalogue.RechercheAvancee(villeDepart, villeArrivee);
+    cout << CouleurTTY(CYAN) << " --------------------------------- " << CouleurTTY(RESET) << endl;
 
     delete[] villeDepart;
     delete[] villeArrivee;
