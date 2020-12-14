@@ -117,10 +117,20 @@ void Rechercherparcours()
     cin >> input;
 
     cout << CouleurTTY(CYAN) << " --- RESULTATS DE LA RECHERCHE --- " << CouleurTTY(RESET) << endl;
-    if (input == 1)
-        catalogue.RechercherTrajet(villeDepart, villeArrivee);
-    else
-        catalogue.RechercheAvancee(villeDepart, villeArrivee);
+    switch (input)
+    {
+        case 1:
+            catalogue.RechercherTrajet(villeDepart, villeArrivee);
+            break;
+        case 2:
+            catalogue.RechercheAvancee(villeDepart, villeArrivee);
+            break;
+        default:
+            cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+    }
     cout << CouleurTTY(CYAN) << " --------------------------------- " << CouleurTTY(RESET) << endl;
 
     delete[] villeDepart;
