@@ -41,3 +41,8 @@ D'autant plus qu'en ajoutant, des `TrajetCompose` au sein d'autres `TrajetCompos
 Nous avons donc choisi comme solution finale de compter dynamiquement le nombre de références faites à chaque `Trajet`et de n'appeler son destructeur par l'objet dont il dépend que lorsque celui-ci n'a plus qu'une référence (l'objet en question), le cas échéant on décrémente juste le nombre de références au `Trajet`.
 
 ### Boucles infinies avec `cin`
+
+Lorsque l'utilisateur entre un caractère quelconque différent du caractère attendu (souvent un chiffre compris entre 1 et 4), les lectures clavier se désactivent et la boucle du main ne s'arrêtait plus, nous forçant à quitter le programme avec un signal externe.
+Ce comportement très déroutant nous a longtemps mis en défaut, jusqu'à notre découverte de ce qu'est le *failbit* de cin :
+
+https://stackoverflow.com/questions/5864540/infinite-loop-with-cin-when-typing-string-while-a-number-is-expected 
