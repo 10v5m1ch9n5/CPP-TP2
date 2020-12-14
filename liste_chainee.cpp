@@ -30,7 +30,7 @@ void  ListeChainee::ToString()
 {
     Chainon* courant = this->premier;
     int i = 1;
-    cout << CouleurTTY(BLEU);
+    cout << CouleurTTY(CYAN);
     while (courant != nullptr)
     {
         cout << i++ << "- ";
