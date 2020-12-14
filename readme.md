@@ -2,8 +2,7 @@
 ## A faire :
 
 - Trouver une solution sans `dynamic_cast` pour l'ajout d'un trajet dans un `TrajetCompose`
-- Ajouter mots clés `const`, etc.
-- Perfectionner l'affichage (couleurs, moyens de transports des trajets simples composant les trajets composés)
+- Ajouter mots clés `const`, `explicit`, `noexept`, etc.
 
 ## Description des classes
 
@@ -20,6 +19,12 @@ Cette classe comme son nom l'indique est une liste chainée générique. En prat
 
 Cette classe est utilisée par `ListeChaineeGenerique`. Elle représente un élément de la liste chainée, un "chainon" qui contient un élément de type générique (objet `Noeud` par exemple) et un pointeur vers le `ChainonGenerique` suivant dans la liste.
 
+### ListeChainee
+
+La classe `ListeChainee` possède un pointeur sur son premier et son dernier objet `Chainon`.
+Elle est utilisée pour mettre en place des collections de `Trajet` dans des objets `TrajetCompose` ou `Catalogue`.
+Elle possède des méthodes permettant de supprimer et d'ajouter des `Trajet` à la liste en surveillant l'évolution de sa taille.
+
 ## Difficultés rencontrées
 
 ### Gestion de la mémoire
@@ -34,3 +39,5 @@ Cependant, le fait de créer une copie de `TrajetSimple` pour chaque référence
 D'autant plus qu'en ajoutant, des `TrajetCompose` au sein d'autres `TrajetCompose`, les copies se multiplieraient encore plus vite.
 
 Nous avons donc choisi comme solution finale de compter dynamiquement le nombre de références faites à chaque `Trajet`et de n'appeler son destructeur par l'objet dont il dépend que lorsque celui-ci n'a plus qu'une référence (l'objet en question), le cas échéant on décrémente juste le nombre de références au `Trajet`.
+
+### Boucles infinies avec `cin`
