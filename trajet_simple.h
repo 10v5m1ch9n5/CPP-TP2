@@ -1,3 +1,5 @@
+// Classe représentant un trajet simple avec sa ville de départ, sa ville d'arrivée et son moyen de transport.
+
 #ifndef TRAJETSIMPLE_H
 #define TRAJETSIMPLE_H
 

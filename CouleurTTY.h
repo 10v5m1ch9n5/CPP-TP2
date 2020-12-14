@@ -1,3 +1,6 @@
+// Manipulateur de flux pour égayer l'affichage dans un terminal.
+// Source : cours POO2 de M. Maranzana
+
 #include <iostream>
 #include <cstring>
 using namespace std;

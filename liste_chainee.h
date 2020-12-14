@@ -1,3 +1,5 @@
+// Une liste chainée de trajets utilisée par le catalogue et les trajets composés.
+
 #ifndef LISTECHAINEE_H
 #define LISTECHAINEE_H
 

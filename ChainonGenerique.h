@@ -1,6 +1,8 @@
 //
 // Created by lucas on 10/12/2020.
 //
+// Une classe analogue à chainon, mais en version générique.
+// Elle n'est utilisée que pour constituer des listes de Noeud dans la recherche avancée du catalogue.
 
 #ifndef C_TP2_CHAINONGENERIQUE_H
 #define C_TP2_CHAINONGENERIQUE_H
