@@ -34,8 +34,8 @@ ListeChaineeGenerique.o:ListeChaineeGenerique.cpp ListeChaineeGenerique.h
 ChainonGenerique.o:ChainonGenerique.cpp ChainonGenerique.h
 
 # ---------------------------------REGLES PHONY---------------------------------
-debug: CPPFLAGS += -DMAP -g
-debug: main.out
+debug: CPPFLAGS += -DMAP -g -DDEBUG
+debug: all
 rebuild:clean debug
 clean:
 	@rm -vf *.o *.out *.gch
