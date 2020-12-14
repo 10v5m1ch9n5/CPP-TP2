@@ -40,20 +40,22 @@ Trajet * Catalogue::GetTrajet(int n) {
 
 void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
 {
-    cout << "Résultats de la recherche :" << endl;
     if (liste->GetTaille() == 0)
         return;
 
     Chainon* courant = liste->Get(0);
+    cout << CouleurTTY(VERT);
     while (courant != nullptr)
     {
         if(strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
         && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
         {
             courant->GetTrajet()->ToString();
+            cout << endl;
         }
         courant = courant->GetSuivant();
     }
+    cout << CouleurTTY(RESET);
 }
 
 void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee, Noeud *noeud)
