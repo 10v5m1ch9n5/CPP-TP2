@@ -21,7 +21,9 @@ Noeud::Noeud(Trajet *t)
 Noeud::~Noeud()
 {
 #ifdef MAP
-    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Noeud { " << trajet->GetDepart() << " -> " << trajet->GetArrive() << " }" << CouleurTTY(RESET) << endl;
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au destructeur de Noeud { ";
+    trajet->ToString();
+    cout << " }" << endl;
 #endif
     delete enfants;
     if (trajet->GetNbReferences() > 1)
