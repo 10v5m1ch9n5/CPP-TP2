@@ -51,7 +51,7 @@ void ListeChaineeGenerique<T>::Ajouter(T* element)
 }
 
 template<typename T>
-T * ListeChaineeGenerique<T>::Get(int index)
+T * ListeChaineeGenerique<T>::Get(const int index)
 {
     if (GetTaille() == 0)
         return nullptr;
@@ -75,7 +75,7 @@ void ListeChaineeGenerique<T>::Supprimer(int index)
     ChainonGenerique<T>* courant = premier;
     ChainonGenerique<T>* precedent;
 
-    for (int i = 0; i < index; ++i)
+    for (int i = 0; i < index; i++)
     {
         precedent = courant;
         courant = courant->GetSuivant();

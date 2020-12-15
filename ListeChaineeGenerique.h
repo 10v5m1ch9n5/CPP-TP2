@@ -21,7 +21,7 @@ public:
     ListeChaineeGenerique();
     ~ListeChaineeGenerique();
     void Ajouter(T* element);
-    T* Get(int index);
+    T* Get(const int index);
     void Supprimer(int index);
     int GetTaille();
 };

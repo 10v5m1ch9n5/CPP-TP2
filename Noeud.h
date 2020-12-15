@@ -39,7 +39,8 @@ public:
     void SetIndice(int i);
     int GetIndice();
     void DetruireCascade(int i = 0);
-    Noeud* GetEnfant(int i);
+    Noeud* GetEnfant(const int i);
+    void Debrancher();
 };
 
 

@@ -84,7 +84,7 @@ void Noeud::DetruireCascade(int i)
         parent->DetruireCascade(GetIndice());
 }
 
-Noeud * Noeud::GetEnfant(int i)
+Noeud * Noeud::GetEnfant(const int i)
 {
     return enfants->Get(i);
 }
@@ -95,4 +95,11 @@ void Noeud::ActualiserIndicesEnfants()
     {
         enfants->Get(i)->SetIndice(i);
     }
+}
+
+void Noeud::Debrancher()
+{
+    if (EstRacine())
+        return;
+    parent->SupprimerEnfant(GetIndice());
 }

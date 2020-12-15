@@ -76,9 +76,9 @@ void Catalogue::RechercheRecursive(const char *villeArrivee, Noeud *noeud)
 #ifdef DEBUG
             cout << "Ajout enfant : ";
             t->ToString();
+            // cout << " || NB enfants = " << noeud->GetNbEnfants();
             cout << endl;
 #endif
-            // RechercheRecursive(t->GetArrive(), villeArrivee, nouveau);
             trajetTrouve = true;
         }
         c = c->GetSuivant();
@@ -89,21 +89,27 @@ void Catalogue::RechercheRecursive(const char *villeArrivee, Noeud *noeud)
 #ifdef DEBUG
         cout << "Pas de continuité trouvée pour : " << villeDepart << endl;
 #endif
-        noeud->DetruireCascade();
+        noeud->Debrancher();
         return;
     }
 
 
 
-    for (int i = 0; i < noeud->GetNbEnfants(); ++i)
+    int i = 0;
+    int n;
+    while ( (n = noeud->GetNbEnfants() ) > 0 && i < n)
     {
 #ifdef DEBUG
         cout << "Recherche récursive dans : ";
         noeud->GetEnfant(i)->GetTrajet()->ToString();
         cout << endl;
 #endif
-        RechercheRecursive(villeArrivee, noeud->GetEnfant(i));
+        RechercheRecursive(villeArrivee, noeud->GetEnfant(i++));
+        if (noeud->GetNbEnfants() < n)
+            i = 0;
     }
+    if (!noeud->GetNbEnfants())
+        noeud->Debrancher();
 }
 
 void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArrivee)
