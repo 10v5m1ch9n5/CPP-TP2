@@ -13,7 +13,7 @@
 class Catalogue {
 private:
     ListeChainee* liste;
-    void RechercheRecursive(const char * villeDepart, const char * villeArrivee, Noeud* noeud);
+    void RechercheRecursive(const char * villeArrivee, Noeud* noeud);
 public:
     Catalogue();
     ~Catalogue();

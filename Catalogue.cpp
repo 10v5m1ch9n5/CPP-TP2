@@ -58,8 +58,9 @@ void Catalogue::RechercherTrajet(char *villeDepart, char *villeArrivee)
     cout << CouleurTTY(RESET);
 }
 
-void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArrivee, Noeud *noeud)
+void Catalogue::RechercheRecursive(const char *villeArrivee, Noeud *noeud)
 {
+    const char* villeDepart = noeud->GetTrajet()->GetArrive();
     if (strcmp(villeDepart, villeArrivee) == 0)
         return;
 
@@ -101,7 +102,7 @@ void Catalogue::RechercheRecursive(const char *villeDepart, const char *villeArr
         noeud->GetEnfant(i)->GetTrajet()->ToString();
         cout << endl;
 #endif
-        RechercheRecursive(noeud->GetEnfant(i)->GetTrajet()->GetArrive(), villeArrivee, noeud->GetEnfant(i));
+        RechercheRecursive(villeArrivee, noeud->GetEnfant(i));
     }
 }
 
@@ -123,7 +124,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 #ifdef DEBUG
             cout << "-> Nouvelle racine (" << racines->GetTaille()-1 << ") : " << villeDepart << " -> " << t->GetArrive() << endl;
 #endif
-            RechercheRecursive(t->GetArrive(), villeArrivee, nouveau);
+            RechercheRecursive(villeArrivee, nouveau);
         }
         c = c->GetSuivant();
     }
