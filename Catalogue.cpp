@@ -106,7 +106,7 @@ void Catalogue::RechercheRecursive(const char *villeArrivee, Noeud *noeud)
 #endif
         RechercheRecursive(villeArrivee, noeud->GetEnfant(i++));
         if (noeud->GetNbEnfants() < n)
-            i = 0;
+            i--;
     }
     if (!noeud->GetNbEnfants())
         noeud->Debrancher();
