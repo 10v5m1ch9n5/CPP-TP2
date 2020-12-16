@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
+#include <fstream>
 using namespace std;
 
 Catalogue::Catalogue() {
