@@ -205,8 +205,23 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
     delete racines;
 }
 
-void Catalogue::Sauvegarder(const char *filename)
-{
+void Catalogue::Sauvegarder(const char* sauvegarde)
+{   fstream filename;
+    filename.open(sauvegarde,ios::trunc);
+    Chainon* courant = this->liste->Get(0);
+    TrajetSimple* trajetSimple = dynamic_cast<TrajetSimple*>(courant->GetTrajet());
+    TrajetCompose* trajetCompose = dynamic_cast<TrajetCompose*>(courant->GetTrajet());
+    while (courant != nullptr)
+    {
+        if ( trajetSimple != nullptr)
+        {
+            filename << trajetSimple->GetDepart() << "\n" << endl;
+            filename << trajetSimple->GetArrive() << "\n" << endl;
+            filename << trajetSimple->GetMoyenTransport() << "\n" << endl;
+        }
+        //courant = courant->GetSuivant();
+    }
+    filename.close();
 
 }
 
