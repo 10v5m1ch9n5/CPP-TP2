@@ -212,5 +212,69 @@ void Catalogue::Sauvegarder(const char *filename)
 
 void Catalogue::Charger(const char *filename)
 {
+    ifstream fichier(filename);
+    if (!fichier.is_open())
+        cout << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
 
+    string ligne;
+    while (getline(fichier, ligne))
+    {
+        if (ligne == "quit:")
+            break;
+
+        if(ligne == "ts:")
+        {
+            TrajetSimple* ts = LectureTrajetSimple(fichier);
+            liste->Ajouter(ts);
+        }
+
+        if (ligne == "tc:")
+        {
+            TrajetCompose* tc = LectureTrajetCompose(fichier);
+            liste->Ajouter(tc);
+        }
+    }
+
+    fichier.close();
+}
+
+TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
+{
+    TrajetCompose* tc = new TrajetCompose();
+    string ligne;
+    while (getline(fs, ligne))
+    {
+        if (ligne == "end:")
+            return tc;
+
+        if(ligne == "ts:")
+        {
+            TrajetSimple* ts = LectureTrajetSimple(fs);
+            tc->AjouterTrajet(ts);
+        }
+
+        if (ligne == "tc:")
+        {
+            TrajetCompose* nouveau = LectureTrajetCompose(fs);
+            tc->AjouterTrajet(nouveau);
+        }
+    }
+
+    cout << CouleurTTY(ROUGE) << "Erreur dans la lecture du trajet composé !" << CouleurTTY(RESET) << endl;
+    return nullptr;
+}
+
+TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
+{
+    char* villeDepart = new char [25];
+    fs.getline(villeDepart, 25);
+    char* villeArrivee = new char [25];
+    fs.getline(villeArrivee, 25);
+    char* moyenTransport = new char [25];
+    fs.getline(moyenTransport, 25);
+    TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
+    delete[] villeDepart;
+    delete[] villeArrivee;
+    delete[] moyenTransport;
+    return ts;
 }

@@ -7,13 +7,17 @@
 #define C_TP2_CATALOGUE_H
 
 #include "trajet.h"
+#include "trajet_compose.h"
 #include "liste_chainee.h"
 #include "Noeud.h"
+#include <fstream>
 
 class Catalogue {
 private:
     ListeChainee* liste;
     void RechercheRecursive(const char * villeArrivee, Noeud* noeud);
+    TrajetCompose* LectureTrajetCompose(std::ifstream & fs);
+    TrajetSimple* LectureTrajetSimple(std::ifstream & fs);
 public:
     Catalogue();
     ~Catalogue();
@@ -22,8 +26,8 @@ public:
     void RechercherTrajet(char* villeDepart, char* villeArrivee);
     void RechercheAvancee(const char * villeDepart, const char* villeArrivee);
     Trajet* GetTrajet(int n); // renvoie le nième trajet du catalogue (méthode utilisée pour ajouter un trajet existant dans un trajet composé)
-    void Sauvegarder(const char* filename = "fumier.txt");
-    void Charger(const char* filename = "fumier.txt");
+    void Sauvegarder(const char* filename = "sauvegarde.txt");
+    void Charger(const char* filename = "sauvegarde.txt");
 };
 
 
