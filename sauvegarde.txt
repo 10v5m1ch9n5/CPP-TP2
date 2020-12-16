@@ -1,0 +1,24 @@
+ts:
+Paris
+Lyon
+Train
+ts:
+Lyon
+Marseille
+Train
+tc:
+tc:
+ts:
+Robinson RER
+Chatelet Les Halles
+RER B
+ts:
+Chatelet Les Halles
+Gare de Lyon
+RER A
+end:
+ts:
+Gare de Lyon
+Lyon Part-Dieu
+TGV
+end:
