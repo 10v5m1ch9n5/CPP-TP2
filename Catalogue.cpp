@@ -224,6 +224,7 @@ void Catalogue::Charger(const char *filename)
 
         if(ligne == "ts:")
         {
+            cout << "Passage dans TS" << endl;
             TrajetSimple* ts = LectureTrajetSimple(fichier);
             liste->Ajouter(ts);
         }
@@ -249,6 +250,7 @@ TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
 
         if(ligne == "ts:")
         {
+            cout << "FUMIER" << endl;
             TrajetSimple* ts = LectureTrajetSimple(fs);
             tc->AjouterTrajet(ts);
         }
@@ -272,6 +274,7 @@ TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
     fs.getline(villeArrivee, 25);
     char* moyenTransport = new char [25];
     fs.getline(moyenTransport, 25);
+    cout << "Appel au constructeur de TrajetSimple" << endl;
     TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     delete[] villeDepart;
     delete[] villeArrivee;
