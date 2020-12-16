@@ -203,3 +203,13 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
     delete racines;
 }
+
+void Catalogue::Sauvegarder(const char *filename)
+{
+
+}
+
+void Catalogue::Charger(const char *filename)
+{
+
+}
