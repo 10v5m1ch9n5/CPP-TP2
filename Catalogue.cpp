@@ -214,7 +214,7 @@ void Catalogue::Charger(const char *filename)
 {
     ifstream fichier(filename);
     if (!fichier.is_open())
-        cout << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
+        cerr << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
 
     string ligne;
     while (getline(fichier, ligne))
@@ -262,7 +262,7 @@ TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
         }
     }
 
-    cout << CouleurTTY(ROUGE) << "Erreur dans la lecture du trajet composé !" << CouleurTTY(RESET) << endl;
+    cerr << CouleurTTY(ROUGE) << "Erreur dans la lecture du trajet composé !" << CouleurTTY(RESET) << endl;
     return nullptr;
 }
 
@@ -279,5 +279,6 @@ TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
     delete[] villeDepart;
     delete[] villeArrivee;
     delete[] moyenTransport;
+    cout << "return LectureTrajetSimple" << endl;
     return ts;
 }
