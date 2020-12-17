@@ -94,7 +94,7 @@ void AjouterTrajet()
             AjouterTrajetCompose();
             break;
         default:
-            cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
+            cerr << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
@@ -126,7 +126,7 @@ void Rechercherparcours()
             catalogue.RechercheAvancee(villeDepart, villeArrivee);
             break;
         default:
-            cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
+            cerr << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
@@ -171,7 +171,7 @@ int main()
                 quitter = true;
                 break;
             default:
-                cout << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
+                cerr << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
                 // Sortir cin de son "fail state" :
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
