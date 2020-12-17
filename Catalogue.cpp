@@ -250,7 +250,6 @@ TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
 
         if(ligne == "ts:")
         {
-            cout << "FUMIER" << endl;
             TrajetSimple* ts = LectureTrajetSimple(fs);
             tc->AjouterTrajet(ts);
         }
