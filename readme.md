@@ -3,6 +3,8 @@
 
 - Trouver une solution sans `dynamic_cast` pour l'ajout d'un trajet dans un `TrajetCompose`
 - Ajouter mots clés `const`, `explicit`, `noexept`, etc.
+- Créer les contructeurs de copie
+- Fusionner les classes `ListeChainee` et `ListeChaineeGenerique`
 
 ## Description des classes
 
