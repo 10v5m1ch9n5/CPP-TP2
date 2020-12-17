@@ -61,3 +61,10 @@ const char * TrajetSimple::GetMoyenTransport()
 {
     return moyenTransport;
 }
+
+TrajetSimple::TrajetSimple(TrajetSimple && ts) noexcept : Trajet(0)
+{
+#ifdef MAP
+    cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de déplacement de TrajetSimple" << endl;
+#endif
+}
