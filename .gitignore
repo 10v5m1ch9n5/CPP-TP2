@@ -36,3 +36,6 @@
 
 # Fichiers swap
 *.swp
+
+# Sauvegardes
+*.sav
