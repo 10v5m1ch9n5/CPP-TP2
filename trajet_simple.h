@@ -13,7 +13,7 @@ class TrajetSimple : public Trajet
     char* moyenTransport;
 // Constructeurs
     public:
-    TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
+    explicit TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
     TrajetSimple(const TrajetSimple & t);
     TrajetSimple(TrajetSimple&&) noexcept ;
 // Méthodes
