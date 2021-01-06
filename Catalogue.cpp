@@ -214,7 +214,10 @@ void Catalogue::Charger(const char *filename)
 {
     ifstream fichier(filename);
     if (!fichier.is_open())
+    {
         cerr << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
+        return;
+    }
 
     string ligne;
     while (getline(fichier, ligne))
@@ -224,7 +227,6 @@ void Catalogue::Charger(const char *filename)
 
         if(ligne == "ts:")
         {
-            cout << "Passage dans TS" << endl;
             TrajetSimple* ts = LectureTrajetSimple(fichier);
             liste->Ajouter(ts);
         }
@@ -252,6 +254,7 @@ TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
         {
             TrajetSimple* ts = LectureTrajetSimple(fs);
             tc->AjouterTrajet(ts);
+            delete ts;
         }
 
         if (ligne == "tc:")
@@ -273,11 +276,9 @@ TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
     fs.getline(villeArrivee, 25);
     char* moyenTransport = new char [25];
     fs.getline(moyenTransport, 25);
-    cout << "Appel au constructeur de TrajetSimple" << endl;
     TrajetSimple* ts = new TrajetSimple(villeDepart, villeArrivee, moyenTransport);
     delete[] villeDepart;
     delete[] villeArrivee;
     delete[] moyenTransport;
-    cout << "return LectureTrajetSimple" << endl;
     return ts;
 }
