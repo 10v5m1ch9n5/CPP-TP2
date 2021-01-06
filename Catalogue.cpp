@@ -212,6 +212,7 @@ void Catalogue::Sauvegarder(const char *filename)
 
 void Catalogue::Charger(const char *filename)
 {
+    cout << CouleurTTY(VERT) << "Début du chargement..." << CouleurTTY(RESET) << endl;
     ifstream fichier(filename);
     if (!fichier.is_open())
     {
@@ -239,6 +240,7 @@ void Catalogue::Charger(const char *filename)
     }
 
     fichier.close();
+    cout << CouleurTTY(VERT) << "Chargement terminé !" << CouleurTTY(RESET) << endl;
 }
 
 TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
