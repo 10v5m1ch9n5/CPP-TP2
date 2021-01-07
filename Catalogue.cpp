@@ -207,7 +207,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
 void Catalogue::Sauvegarder( const char* filename)
 {
-    string const nomFichier("/Users/alexandresenouci/Desktop/lalili.txt");
+    string const nomFichier("/Users/alexandresenouci/Desktop/sauvegarde.txt");
     ofstream monFlux(nomFichier.c_str());
     Chainon *courant = this->liste->Get(0);
     int input;
