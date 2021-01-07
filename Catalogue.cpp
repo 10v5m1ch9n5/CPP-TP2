@@ -207,7 +207,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
 void Catalogue::Sauvegarder()
 {
-    string const nomFichier("/Users/alexandresenouci/Desktop/test.txt");
+    string const nomFichier("test.sav");
     ofstream monFlux(nomFichier.c_str());
     Chainon *courant = this->liste->Get(0);
     int input;
@@ -257,29 +257,38 @@ void Catalogue::Sauvegarder()
         case 2:
             char* villeDepart = new char [25];
             char* villeArrivee = new char [25];
+            for (int i = 0; i < 25; ++i)
+            {
+                villeDepart[i] = '\0';
+                villeArrivee[i] = '\0';
+            }
+
             cout << "veuillez choisir un mode de sauvegarde depart/arrivé" << endl;
             cout << "1) sauvegarde en fonction d'un depart" << endl;
             cout << "2) sauvegarde en fonction d'un arrivé" << endl;
             cout << "3) sauvegarde en fonction d'un départ et arrivé" << endl;
             cin >> input;
+
             if (input == 1 )
             {
                 cin.ignore(1);
                 cout << "Entrez la ville de départ :" << endl;
                 cin.getline(villeDepart, 25);
             }
-            if (input == 2 )
+            else if (input == 2 )
             {
                 cin.ignore(1);
                 cout << "Entrez la ville d'arrivée :" << endl;
                 cin.getline(villeArrivee, 25);
             }
-            if (input ==3)
+            else
             {
                 cin.ignore(1);
                 cout << "Entrez la ville de départ :" << endl;
+                villeDepart = new char [25];
                 cin.getline(villeDepart, 25);
                 cout << "Entrez la ville d'arrivée :" << endl;
+                villeArrivee = new char [25];
                 cin.getline(villeArrivee, 25);
             }
 
@@ -338,16 +347,14 @@ void Catalogue::Sauvegarder()
                             monFlux << "end:" << endl;
                         }
                     case 3:
-                        if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
-                            && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
+                        if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0 && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
                             monFlux << "ts:" << endl;
                             monFlux << trajetSimple->GetDepart() << endl;
                             monFlux << trajetSimple->GetArrive() << endl;
                             monFlux << trajetSimple->GetMoyenTransport() << endl;
                         }
-                        if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
-                            && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
+                        if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0 && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
                             monFlux << "tc:" << endl;
                             TrajetSimple *ts;
