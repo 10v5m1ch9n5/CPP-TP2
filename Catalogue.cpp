@@ -207,7 +207,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
 void Catalogue::Sauvegarder( const char* filename)
 {
-    string const nomFichier("/Users/alexandresenouci/Desktop/lalili.txt");
+    string const nomFichier("test.sav");
     ofstream monFlux(nomFichier.c_str());
     Chainon *courant = this->liste->Get(0);
     int input;
@@ -222,26 +222,26 @@ void Catalogue::Sauvegarder( const char* filename)
                 TrajetCompose *trajetCompose = dynamic_cast<TrajetCompose *>(courant->GetTrajet());
                 if (trajetSimple != nullptr && input != 3)
                 {
-                    monFlux << "ts" << "\n" << endl;
-                    monFlux << trajetSimple->GetDepart() << "\n" << endl;
-                    monFlux << trajetSimple->GetArrive() << "\n" << endl;
-                    monFlux << trajetSimple->GetMoyenTransport() << "\n" << endl;
+                    monFlux << "ts:" << endl;
+                    monFlux << trajetSimple->GetDepart() << endl;
+                    monFlux << trajetSimple->GetArrive() << endl;
+                    monFlux << trajetSimple->GetMoyenTransport() << endl;
                 }
                 if (trajetCompose != nullptr && input != 2)
                 {
-                    monFlux << "tc" << "\n" << endl;
+                    monFlux << "tc:" << endl;
                     TrajetSimple *ts;
                     int index = trajetCompose->GetTaillec();
                     for (int i = 0; i < index; i++)
                     {
                         ts = trajetCompose->SaveCompose(index - 1);
-                        monFlux << "ts" << "\n" << endl;
-                        monFlux << ts->GetDepart() << "\n" << endl;
-                        monFlux << ts->GetArrive() << "\n" << endl;
-                        monFlux << ts->GetMoyenTransport() << "\n" << endl;
+                        monFlux << "ts:" << endl;
+                        monFlux << ts->GetDepart() << endl;
+                        monFlux << ts->GetArrive() << endl;
+                        monFlux << ts->GetMoyenTransport() << endl;
 
                     }
-                    monFlux << "end" << "\n" << endl;
+                    monFlux << "end" << endl;
                 }
                 courant = courant->GetSuivant();
             }

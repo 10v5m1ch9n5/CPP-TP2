@@ -155,7 +155,9 @@ int main()
         cout << "1 : Ajouter un trajet au catalogue" << endl;
         cout << "2 : Afficher le catalogue" << endl;
         cout << "3 : Rechercher un parcours" << endl;
-        cout << "4 : Quitter l'application" << endl;
+        cout << "4 : Charger la sauvegarde" << endl;
+        cout << "5 : Sauvegarder le catalogue" << endl;
+        cout << "6 : Quitter l'application" << endl;
 
         cin >> input;
         switch (input)
@@ -170,10 +172,13 @@ int main()
                 Rechercherparcours();
                 break;
             case 4:
-                quitter = true;
+                catalogue.Charger();
                 break;
             case 5:
                 catalogue.Sauvegarder("lalili");
+                break;
+            case 6:
+                quitter = true;
                 break;
             default:
                 cerr << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;
