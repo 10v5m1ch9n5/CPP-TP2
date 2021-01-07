@@ -296,13 +296,61 @@ void Catalogue::Sauvegarder( const char* filename)
              */
     }
 }
+
 void Catalogue::Charger(const char *filename)
 {
+    bool tsUniquement, tcUniquement, departImpose, arriveeImposee;
+    tsUniquement = tcUniquement = departImpose = arriveeImposee = false;
+    char* villeDepart = nullptr;
+    char* villeArrivee = nullptr;
+
+    int input;
+    cout << "Quel type de chargement effectuer ?" << endl;
+    cout << "1 : Charger tous les trajets" << endl;
+    cout << "2 : Charger uniquement les trajets simples" << endl;
+    cout << "3 : Charger uniquement les trajets composés" << endl;
+    cout << "4 : Charger en spécifiant la ville de départ ou la ville d'arrivée" << endl;
+    cin >> input;
+
+    switch (input)
+    {
+        case 2:
+            tsUniquement = true;
+            break;
+        case 3:
+            tcUniquement = true;
+            break;
+        case 4:
+            cout << "Spécifier la ville de départ ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville de départ :" << endl;
+                departImpose = true;
+                villeDepart = new char [25];
+                cin.getline(villeDepart, 25);
+            }
+            cout << "Spécifier la ville d'arrivée ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville d'arrivée :" << endl;
+                arriveeImposee = true;
+                villeArrivee = new char [25];
+                cin.getline(villeArrivee, 25);
+            }
+        default:
+        case 1:
+            break;
+    }
+
     cout << CouleurTTY(VERT) << "Début du chargement..." << CouleurTTY(RESET) << endl;
     ifstream fichier(filename);
     if (!fichier.is_open())
     {
-        cerr << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
+        cerr << CouleurTTY(ROUGE) << "ConfigurerChargement : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
         return;
     }
 
@@ -315,18 +363,36 @@ void Catalogue::Charger(const char *filename)
         if(ligne == "ts:")
         {
             TrajetSimple* ts = LectureTrajetSimple(fichier);
-            liste->Ajouter(ts);
+
+            // TODO : factoriser ce code dans une même fonction
+            bool arriveeCorrespond = arriveeImposee && strcmp(ts->GetArrive(), villeArrivee) == 0;
+            bool departCorrespond = departImpose && strcmp(ts->GetDepart(), villeDepart) == 0;
+            if( !tcUniquement && ((!departImpose && !arriveeImposee) || (departImpose && arriveeImposee && departCorrespond && arriveeCorrespond) || (departImpose && !arriveeImposee && departCorrespond) || (!departImpose && arriveeImposee && arriveeCorrespond)) )
+                liste->Ajouter(ts);
+            else
+                delete ts;
         }
 
         if (ligne == "tc:")
         {
             TrajetCompose* tc = LectureTrajetCompose(fichier);
-            liste->Ajouter(tc);
+
+            bool arriveeCorrespond = arriveeImposee && strcmp(tc->GetArrive(), villeArrivee) == 0;
+            bool departCorrespond = departImpose && strcmp(tc->GetDepart(), villeDepart) == 0;
+            if( !tsUniquement && ((!departImpose && !arriveeImposee) || (departImpose && arriveeImposee && departCorrespond && arriveeCorrespond) || (departImpose && !arriveeImposee && departCorrespond) || (!departImpose && arriveeImposee && arriveeCorrespond)) )
+                liste->Ajouter(tc);
+            else
+                delete tc;
         }
     }
 
     fichier.close();
     cout << CouleurTTY(VERT) << "Chargement terminé !" << CouleurTTY(RESET) << endl;
+
+    if (departImpose)
+        delete[] villeDepart;
+    if (arriveeImposee)
+        delete[] villeArrivee;
 }
 
 TrajetCompose* Catalogue::LectureTrajetCompose(std::ifstream &fs)
@@ -370,3 +436,50 @@ TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
     delete[] moyenTransport;
     return ts;
 }
+
+void Catalogue::ConfigurerChargement(bool & tsUniquement, bool & tcUniquement, bool & departImpose, bool & arriveeImposee,
+                                     char *villeDepart, char *villeArrivee)
+{
+    int input;
+    cout << "Quel type de chargement effectuer ?" << endl;
+    cout << "1 : Charger tous les trajets" << endl;
+    cout << "2 : Charger uniquement les trajets simples" << endl;
+    cout << "3 : Charger uniquement les trajets composés" << endl;
+    cout << "4 : Charger en spécifiant la ville de départ ou la ville d'arrivée" << endl;
+    cin >> input;
+
+    switch (input)
+    {
+        case 2:
+            tsUniquement = true;
+            return;
+        case 3:
+            tcUniquement = true;
+            return;
+        case 4:
+            cout << "Spécifier la ville de départ ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville de départ :" << endl;
+                departImpose = true;
+                villeDepart = new char [25];
+                cin.getline(villeDepart, 25);
+            }
+            cout << "Spécifier la ville d'arrivée ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville d'arrivée :" << endl;
+                arriveeImposee = true;
+                villeArrivee = new char [25];
+                cin.getline(villeArrivee, 25);
+            }
+        default:
+        case 1:
+            return;
+    }
+}
+
