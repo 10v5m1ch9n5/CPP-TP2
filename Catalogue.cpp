@@ -207,7 +207,7 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
 
 void Catalogue::Sauvegarder()
 {
-    string const nomFichier("test.sav");
+    string const nomFichier("/Users/alexandresenouci/Desktop/test.txt");
     ofstream monFlux(nomFichier.c_str());
     Chainon *courant = this->liste->Get(0);
     int input;
@@ -262,18 +262,26 @@ void Catalogue::Sauvegarder()
             cout << "2) sauvegarde en fonction d'un arrivé" << endl;
             cout << "3) sauvegarde en fonction d'un départ et arrivé" << endl;
             cin >> input;
-            if (input == 1 || input == 3)
+            if (input == 1 )
             {
                 cin.ignore(1);
                 cout << "Entrez la ville de départ :" << endl;
                 cin.getline(villeDepart, 25);
             }
-            if (input == 2 || input == 3)
+            if (input == 2 )
             {
+                cin.ignore(1);
                 cout << "Entrez la ville d'arrivée :" << endl;
                 cin.getline(villeArrivee, 25);
             }
-
+            if (input ==3)
+            {
+                cin.ignore(1);
+                cout << "Entrez la ville de départ :" << endl;
+                cin.getline(villeDepart, 25);
+                cout << "Entrez la ville d'arrivée :" << endl;
+                cin.getline(villeArrivee, 25);
+            }
 
             while (courant != nullptr)
             {
