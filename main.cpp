@@ -18,9 +18,9 @@ void AjouterTrajetSimple()
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
     char* moyenTransport = new char [25];
-    cout << "Entrez la position de départ :" << endl;
+    cout << "Entrez la ville de départ :" << endl;
     cin.getline(villeDepart, 25);
-    cout << "Entrez la position d'arrivée :" << endl;
+    cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
     cout << "Entez le moyen de transport :" << endl;
     cin.getline(moyenTransport, 25);
@@ -55,9 +55,9 @@ void AjouterTrajetCompose()
         {
             case 1:
                 cin.ignore(1);
-                cout << "Entrez la position de départ" << endl;
+                cout << "Entrez la ville de départ" << endl;
                 cin.getline(villeDepart, 25);
-                cout << "Entez la position d'arrivée" << endl;
+                cout << "Entez la ville d'arrivée" << endl;
                 cin.getline(villeArrivee, 25);
                 cout << "Entez le moyen de transport" << endl;
                 cin.getline(moyenTransport, 25);
@@ -107,9 +107,9 @@ void Rechercherparcours()
     char* villeDepart = new char [25];
     char* villeArrivee = new char [25];
     cin.ignore(1);
-    cout << "Entrez la position de départ :" << endl;
+    cout << "Entrez la ville de départ :" << endl;
     cin.getline(villeDepart, 25);
-    cout << "Entrez la position d'arrivée :" << endl;
+    cout << "Entrez la ville d'arrivée :" << endl;
     cin.getline(villeArrivee, 25);
     cout << "Choisissez votre mode de recherche :" << endl;
     cout << "1. Recherche simple" << endl;
@@ -155,9 +155,7 @@ int main()
         cout << "1 : Ajouter un trajet au catalogue" << endl;
         cout << "2 : Afficher le catalogue" << endl;
         cout << "3 : Rechercher un parcours" << endl;
-        cout << "4 : Sauvegarder le catalogue" << endl;
-        cout << "5 : Charger la sauvegarde" << endl;
-        cout << "6 : Quitter l'application" << endl;
+        cout << "4 : Quitter l'application" << endl;
 
         cin >> input;
         switch (input)
@@ -172,12 +170,6 @@ int main()
                 Rechercherparcours();
                 break;
             case 4:
-                cout << CouleurTTY(ROUGE) << "Sauvegarde non encore implémentée" << CouleurTTY(RESET) << endl;
-                break;
-            case 5:
-                catalogue.Charger();
-                break;
-            case 6:
                 quitter = true;
                 break;
             case 5:
