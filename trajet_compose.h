@@ -28,6 +28,8 @@ public:
     void ToString() override;
     void AjouterTrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
     void AjouterTrajet(Trajet* t);
+    TrajetSimple* SaveComposé(int index);
+    int GetTaillec();
 };
 
 #endif

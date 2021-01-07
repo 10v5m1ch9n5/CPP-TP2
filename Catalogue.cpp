@@ -205,23 +205,42 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
     delete racines;
 }
 
-void Catalogue::Sauvegarder(const char* sauvegarde)
-{   fstream filename;
-    filename.open(sauvegarde,ios::trunc);
+void Catalogue::Sauvegarder(const char *catalogue)
+{
+    string const nomFichier("/Users/alexandresenouci/Desktop/lalili.txt");
+    ofstream monFlux(nomFichier.c_str());
     Chainon* courant = this->liste->Get(0);
-    TrajetSimple* trajetSimple = dynamic_cast<TrajetSimple*>(courant->GetTrajet());
-    TrajetCompose* trajetCompose = dynamic_cast<TrajetCompose*>(courant->GetTrajet());
     while (courant != nullptr)
     {
+        TrajetSimple* trajetSimple = dynamic_cast<TrajetSimple*>(courant->GetTrajet());
+        TrajetCompose* trajetCompose = dynamic_cast<TrajetCompose*>(courant->GetTrajet());
         if ( trajetSimple != nullptr)
         {
-            filename << trajetSimple->GetDepart() << "\n" << endl;
-            filename << trajetSimple->GetArrive() << "\n" << endl;
-            filename << trajetSimple->GetMoyenTransport() << "\n" << endl;
+            monFlux << "ts" << "\n" << endl;
+            monFlux << trajetSimple->GetDepart() << "\n" << endl;
+            monFlux << trajetSimple->GetArrive() << "\n" << endl;
+            monFlux << trajetSimple->GetMoyenTransport() << "\n" << endl;
         }
-        //courant = courant->GetSuivant();
+        if( trajetCompose != nullptr)
+        {
+            monFlux << "tc" << "\n" << endl;
+            TrajetSimple* ts;
+            int index = trajetCompose->GetTaillec();
+            for (int i = 0; i<index;i++)
+            {
+                ts=trajetCompose->SaveComposé(index-1);
+                monFlux << "ts" << "\n" << endl;
+                monFlux << ts->GetDepart() << "\n" << endl;
+                monFlux << ts->GetArrive() << "\n" << endl;
+                monFlux << ts->GetMoyenTransport() << "\n" << endl;
+
+            }
+            monFlux << "end" << "\n" << endl;
+
+        }
+
+        courant = courant->GetSuivant();
     }
-    filename.close();
 
 }
 

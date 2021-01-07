@@ -6,6 +6,8 @@
 #include "trajet_compose.h"
 #include "Catalogue.h"
 #include "CouleurTTY.h"
+#include <fstream>
+#include <string>
 using namespace std;
 
 Catalogue catalogue;
@@ -169,6 +171,9 @@ int main()
                 break;
             case 4:
                 quitter = true;
+                break;
+            case 5:
+                catalogue.Sauvegarder("lalili");
                 break;
             default:
                 cerr << CouleurTTY(ROUGE) << "Veuillez entrer un chiffre correct." << CouleurTTY(RESET) << endl;

@@ -95,3 +95,14 @@ void TrajetCompose::ToString()
     courant->GetTrajet()->ToString();
     cout << " ]";
 }
+
+TrajetSimple* TrajetCompose::SaveComposé(int index)
+{
+    Chainon* courant = listeChainee->Get(index);
+    return dynamic_cast<TrajetSimple*>(courant->GetTrajet());
+}
+
+int TrajetCompose::GetTaillec()
+{
+    return listeChainee->GetTaille();
+}
