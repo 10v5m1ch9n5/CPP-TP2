@@ -241,7 +241,7 @@ void Catalogue::Sauvegarder( const char* filename)
                     int index = trajetCompose->GetTaillec();
                     for (int i = 0; i < index; i++)
                     {
-                        ts = trajetCompose->SaveCompose(i-1);
+                        ts = trajetCompose->SaveCompose(i);
                         monFlux << "ts:" << endl;
                         monFlux << ts->GetDepart() << endl;
                         monFlux << ts->GetArrive() << endl;
@@ -297,7 +297,7 @@ void Catalogue::Sauvegarder( const char* filename)
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
-                                ts = trajetCompose->SaveCompose(i - 1);
+                                ts = trajetCompose->SaveCompose(i);
                                 monFlux << "ts" << "\n" << endl;
                                 monFlux << ts->GetDepart() << "\n" << endl;
                                 monFlux << ts->GetArrive() << "\n" << endl;
@@ -321,7 +321,7 @@ void Catalogue::Sauvegarder( const char* filename)
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
-                                ts = trajetCompose->SaveCompose(i - 1);
+                                ts = trajetCompose->SaveCompose(i);
                                 monFlux << "ts" << "\n" << endl;
                                 monFlux << ts->GetDepart() << "\n" << endl;
                                 monFlux << ts->GetArrive() << "\n" << endl;
@@ -347,7 +347,7 @@ void Catalogue::Sauvegarder( const char* filename)
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
-                                ts = trajetCompose->SaveCompose(i - 1);
+                                ts = trajetCompose->SaveCompose(i);
                                 monFlux << "ts" << "\n" << endl;
                                 monFlux << ts->GetDepart() << "\n" << endl;
                                 monFlux << ts->GetArrive() << "\n" << endl;
