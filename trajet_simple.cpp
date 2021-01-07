@@ -68,3 +68,13 @@ TrajetSimple::TrajetSimple(TrajetSimple && ts) noexcept : Trajet(0)
     cout << CouleurTTY(JAUNE) << "MAP : Appel au constructeur de déplacement de TrajetSimple" << endl;
 #endif
 }
+
+void TrajetSimple::Sauvegarder(ofstream &fs)
+{
+    fs << "ts:" << endl;
+    fs << depart << endl;
+    fs << arrivee << endl;
+    fs << moyenTransport << endl;
+}
+
+

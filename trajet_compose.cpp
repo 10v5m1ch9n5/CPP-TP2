@@ -96,13 +96,15 @@ void TrajetCompose::ToString()
     cout << " ]";
 }
 
-TrajetSimple* TrajetCompose::SaveCompose(int index)
+void TrajetCompose::Sauvegarder(std::ofstream & fs)
 {
-    Chainon* courant = listeChainee->Get(index);
-    return dynamic_cast<TrajetSimple*>(courant->GetTrajet());
+    fs << "tc:" << endl;
+    Chainon* courant = listeChainee->Get(0);
+    while (courant != nullptr)
+    {
+        courant->GetTrajet()->Sauvegarder(fs);
+        courant = courant->GetSuivant();
+    }
+    fs << "end:" << endl;
 }
 
-int TrajetCompose::GetTaillec()
-{
-    return listeChainee->GetTaille();
-}

@@ -28,8 +28,7 @@ public:
     void ToString() override;
     void AjouterTrajetSimple(const char* villeDepart, const char* villeArrivee, const char* moyenTransport);
     void AjouterTrajet(Trajet* t);
-    TrajetSimple* SaveCompose(int index);
-    int GetTaillec();
+    void Sauvegarder(std::ofstream & fs) override;
 };
 
 #endif

@@ -5,12 +5,15 @@
 #ifndef TRAJET_H
 #define TRAJET_H
 
+#include <fstream>
+
 class Trajet
 {
 public:
     virtual void ToString() {} ;
     virtual const char* GetDepart() {return nullptr;};
     virtual const char* GetArrive() {return nullptr;};
+    virtual void Sauvegarder(std::ofstream & fs) {};
     virtual ~Trajet() = default;
 // Permet de gérer la destruction (cf. conclusion du rapport)
     inline Trajet(int nbFoisPointe) { this->nbFoisPointe = nbFoisPointe; };

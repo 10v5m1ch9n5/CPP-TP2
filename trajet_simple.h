@@ -21,6 +21,7 @@ class TrajetSimple : public Trajet
     const char* GetDepart() override;
     const char* GetArrive() override;
     const char* GetMoyenTransport();
+    void Sauvegarder(std::ofstream & fs) override;
 // Destructeurs
     ~TrajetSimple();
 };

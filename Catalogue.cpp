@@ -205,182 +205,6 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
     delete racines;
 }
 
-void Catalogue::Sauvegarder()
-{
-    string const nomFichier("test.sav");
-    ofstream monFlux(nomFichier.c_str());
-    Chainon *courant = this->liste->Get(0);
-    int input;
-    cout << "veuillez choisir un mode de sauvegarde" << endl;
-    cout << "1) sauvegarde par type de trajet" << endl;
-    cout << "2) sauvegarde en fonction de depart et/ou arrivé" << endl;
-    cin >> input;
-    switch (input)
-    {
-        case 1:
-            cout << "veuillez choisir un mode de sauvegarde de trajet" << endl;
-            cout << "1) sauvegarde intégrale" << endl;
-            cout << "2) sauvegarde trajet simple" << endl;
-            cout << "3) sauvegarde trajet composé" << endl;
-            cin >> input;
-            while (courant != nullptr)
-            {
-                TrajetSimple *trajetSimple = dynamic_cast<TrajetSimple *>(courant->GetTrajet());
-                TrajetCompose *trajetCompose = dynamic_cast<TrajetCompose *>(courant->GetTrajet());
-                if (trajetSimple != nullptr && input != 3)
-                {
-                    monFlux << "ts:" << endl;
-                    monFlux << trajetSimple->GetDepart() << endl;
-                    monFlux << trajetSimple->GetArrive() << endl;
-                    monFlux << trajetSimple->GetMoyenTransport() << endl;
-                }
-                if (trajetCompose != nullptr && input != 2)
-                {
-                    monFlux << "tc:" << endl;
-                    TrajetSimple *ts;
-                    int index = trajetCompose->GetTaillec();
-                    for (int i = 0; i < index; i++)
-                    {
-                        ts = trajetCompose->SaveCompose(i);
-                        monFlux << "ts:" << endl;
-                        monFlux << ts->GetDepart() << endl;
-                        monFlux << ts->GetArrive() << endl;
-                        monFlux << ts->GetMoyenTransport() << endl;
-
-                    }
-                    monFlux << "end:" << endl;
-                }
-                courant = courant->GetSuivant();
-            }
-            break;
-
-        case 2:
-            char* villeDepart = new char [25];
-            char* villeArrivee = new char [25];
-            for (int i = 0; i < 25; ++i)
-            {
-                villeDepart[i] = '\0';
-                villeArrivee[i] = '\0';
-            }
-
-            cout << "veuillez choisir un mode de sauvegarde depart/arrivé" << endl;
-            cout << "1) sauvegarde en fonction d'un depart" << endl;
-            cout << "2) sauvegarde en fonction d'un arrivé" << endl;
-            cout << "3) sauvegarde en fonction d'un départ et arrivé" << endl;
-            cin >> input;
-
-            if (input == 1 )
-            {
-                cin.ignore(1);
-                cout << "Entrez la ville de départ :" << endl;
-                cin.getline(villeDepart, 25);
-            }
-            else if (input == 2 )
-            {
-                cin.ignore(1);
-                cout << "Entrez la ville d'arrivée :" << endl;
-                cin.getline(villeArrivee, 25);
-            }
-            else
-            {
-                cin.ignore(1);
-                cout << "Entrez la ville de départ :" << endl;
-                villeDepart = new char [25];
-                cin.getline(villeDepart, 25);
-                cout << "Entrez la ville d'arrivée :" << endl;
-                villeArrivee = new char [25];
-                cin.getline(villeArrivee, 25);
-            }
-
-            while (courant != nullptr)
-            {
-                TrajetSimple *trajetSimple = dynamic_cast<TrajetSimple *>(courant->GetTrajet());
-                TrajetCompose *trajetCompose = dynamic_cast<TrajetCompose *>(courant->GetTrajet());
-                switch(input)
-                {
-                    case 1:
-                        if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0)
-                        {
-                            monFlux << "ts:" << endl;
-                            monFlux << trajetSimple->GetDepart() << endl;
-                            monFlux << trajetSimple->GetArrive() << endl;
-                            monFlux << trajetSimple->GetMoyenTransport() << endl;
-                        }
-                        if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0)
-                        {
-                            monFlux << "tc:" << endl;
-                            TrajetSimple *ts;
-                            int index = trajetCompose->GetTaillec();
-                            for (int i = 0; i < index; i++)
-                            {
-                                ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts:" << endl;
-                                monFlux << ts->GetDepart() << endl;
-                                monFlux << ts->GetArrive() << endl;
-                                monFlux << ts->GetMoyenTransport() << endl;
-
-                            }
-                            monFlux << "end:" << endl;
-                        }
-                    case 2:
-                        if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
-                        {
-                            monFlux << "ts:" << endl;
-                            monFlux << trajetSimple->GetDepart() << endl;
-                            monFlux << trajetSimple->GetArrive() << endl;
-                            monFlux << trajetSimple->GetMoyenTransport() << endl;
-                        }
-                        if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
-                        {
-                            monFlux << "tc:" << endl;
-                            TrajetSimple *ts;
-                            int index = trajetCompose->GetTaillec();
-                            for (int i = 0; i < index; i++)
-                            {
-                                ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts:" << endl;
-                                monFlux << ts->GetDepart() << endl;
-                                monFlux << ts->GetArrive() << endl;
-                                monFlux << ts->GetMoyenTransport() << endl;
-
-                            }
-                            monFlux << "end:" << endl;
-                        }
-                    case 3:
-                        if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0 && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
-                        {
-                            monFlux << "ts:" << endl;
-                            monFlux << trajetSimple->GetDepart() << endl;
-                            monFlux << trajetSimple->GetArrive() << endl;
-                            monFlux << trajetSimple->GetMoyenTransport() << endl;
-                        }
-                        if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0 && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
-                        {
-                            monFlux << "tc:" << endl;
-                            TrajetSimple *ts;
-                            int index = trajetCompose->GetTaillec();
-                            for (int i = 0; i < index; i++)
-                            {
-                                ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts:" << endl;
-                                monFlux << ts->GetDepart() << endl;
-                                monFlux << ts->GetArrive() << endl;
-                                monFlux << ts->GetMoyenTransport() << endl;
-
-                            }
-                            monFlux << "end:" << endl;
-                        }
-                }
-                courant = courant->GetSuivant();
-
-            }
-            delete [] villeDepart;
-            delete [] villeArrivee;
-
-
-    }
-}
-
 void Catalogue::Charger(const char *filename)
 {
     bool tsUniquement, tcUniquement, departImpose, arriveeImposee;
@@ -434,7 +258,7 @@ void Catalogue::Charger(const char *filename)
     ifstream fichier(filename);
     if (!fichier.is_open())
     {
-        cerr << CouleurTTY(ROUGE) << "ConfigurerChargement : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
+        cerr << CouleurTTY(ROUGE) << "Charger : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
         return;
     }
 
@@ -520,3 +344,102 @@ TrajetSimple * Catalogue::LectureTrajetSimple(std::ifstream &fs)
     delete[] moyenTransport;
     return ts;
 }
+
+void Catalogue::Sauvegarder(const char *filename)
+{
+    bool tsUniquement, tcUniquement, departImpose, arriveeImposee;
+    tsUniquement = tcUniquement = arriveeImposee = departImpose = false;
+    char* villeDepart = nullptr;
+    char* villeArrivee = nullptr;
+    int input;
+    cout << "Quel type de sauvegarde effectuer ?" << endl;
+    cout << "1 : Sauvegarder tous les trajets" << endl;
+    cout << "2 : Sauvegarder uniquement les trajets simples" << endl;
+    cout << "3 : Sauvegarder uniquement les trajets composés" << endl;
+    cout << "4 : Sauvegarder en spécifiant la ville de départ ou la ville d'arrivée" << endl;
+    cin >> input;
+
+    switch (input)
+    {
+        case 2:
+            tsUniquement = true;
+            break;
+        case 3:
+            tcUniquement = true;
+            break;
+        case 4:
+            cout << "Spécifier la ville de départ ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville de départ :" << endl;
+                departImpose = true;
+                villeDepart = new char [25];
+                cin.getline(villeDepart, 25);
+            }
+            cout << "Spécifier la ville d'arrivée ? (0/1)" << endl;
+            cin >> input;
+            cin.ignore(1);
+            if (input)
+            {
+                cout << "Entrez la ville d'arrivée :" << endl;
+                arriveeImposee = true;
+                villeArrivee = new char [25];
+                cin.getline(villeArrivee, 25);
+            }
+        default:
+        case 1:
+            break;
+    }
+
+    ofstream fs(filename);
+    if (!fs.is_open())
+    {
+        cerr << CouleurTTY(ROUGE) << "Sauvegarder : Impossible d'ouvrir le fichier !" << CouleurTTY(RESET) << endl;
+        return;
+    }
+
+    Chainon* courant = liste->Get(0);
+
+    while (courant != nullptr)
+    {
+        if (tsUniquement)
+        {
+            while (courant != nullptr && dynamic_cast<TrajetSimple*>(courant->GetTrajet()) == nullptr)
+            {
+                courant = courant->GetSuivant();
+            }
+        }
+        if (tcUniquement)
+        {
+            while (courant != nullptr && dynamic_cast<TrajetCompose*>(courant->GetTrajet()) == nullptr)
+            {
+                courant = courant->GetSuivant();
+            }
+        }
+        if (departImpose)
+        {
+            while (courant != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) != 0)
+            {
+                courant = courant->GetSuivant();
+            }
+        }
+        if (arriveeImposee)
+        {
+            while (courant != nullptr && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) != 0)
+            {
+                courant = courant->GetSuivant();
+            }
+        }
+        if (courant == nullptr)
+            break;
+
+        courant->GetTrajet()->Sauvegarder(fs);
+        courant = courant->GetSuivant();
+    }
+
+    delete[] villeArrivee;
+    delete[] villeDepart;
+}
+
