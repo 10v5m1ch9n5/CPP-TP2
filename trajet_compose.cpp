@@ -96,7 +96,7 @@ void TrajetCompose::ToString()
     cout << " ]";
 }
 
-TrajetSimple* TrajetCompose::SaveComposé(int index)
+TrajetSimple* TrajetCompose::SaveCompose(int index)
 {
     Chainon* courant = listeChainee->Get(index);
     return dynamic_cast<TrajetSimple*>(courant->GetTrajet());

@@ -234,7 +234,7 @@ void Catalogue::Sauvegarder( const char* filename)
                     int index = trajetCompose->GetTaillec();
                     for (int i = 0; i < index; i++)
                     {
-                        ts = trajetCompose->SaveComposé(index - 1);
+                        ts = trajetCompose->SaveCompose(index - 1);
                         monFlux << "ts" << "\n" << endl;
                         monFlux << ts->GetDepart() << "\n" << endl;
                         monFlux << ts->GetArrive() << "\n" << endl;
@@ -246,6 +246,7 @@ void Catalogue::Sauvegarder( const char* filename)
                 courant = courant->GetSuivant();
             }
             break;
+            /*
         case 2:
             char* villeDepart = new char [25];
             char* villeArrivee = new char [25];
@@ -276,7 +277,7 @@ void Catalogue::Sauvegarder( const char* filename)
                     int index = trajetCompose->GetTaillec();
                     for (int i = 0; i < index; i++)
                     {
-                        ts = trajetCompose->SaveComposé(index - 1);
+                        ts = trajetCompose->SaveCompose(index - 1);
                         monFlux << "ts" << "\n" << endl;
                         monFlux << ts->GetDepart() << "\n" << endl;
                         monFlux << ts->GetArrive() << "\n" << endl;
@@ -292,6 +293,7 @@ void Catalogue::Sauvegarder( const char* filename)
             delete villeDepart[];
             delete villeArrivee[];
             break;
+             */
     }
 }
 void Catalogue::Charger(const char *filename)
