@@ -175,7 +175,7 @@ int main()
                 catalogue.Charger();
                 break;
             case 5:
-                catalogue.Sauvegarder("lalili");
+                catalogue.Sauvegarder();
                 break;
             case 6:
                 quitter = true;

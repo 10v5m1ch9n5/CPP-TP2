@@ -26,9 +26,8 @@ public:
     void RechercherTrajet(char* villeDepart, char* villeArrivee);
     void RechercheAvancee(const char * villeDepart, const char* villeArrivee);
     Trajet* GetTrajet(int n); // renvoie le nième trajet du catalogue (méthode utilisée pour ajouter un trajet existant dans un trajet composé)
-    void Sauvegarder( const char* filename = "test.sav");
+    void Sauvegarder();
     void Charger(const char* filename = "test.sav");
-    void ConfigurerChargement(bool& tsUniquement, bool& tcUniquement, bool& departImpose, bool& arriveeImposee, char* villeDepart, char* villeArrivee);
 };
 
 

@@ -205,9 +205,9 @@ void Catalogue::RechercheAvancee(const char *villeDepart, const char *villeArriv
     delete racines;
 }
 
-void Catalogue::Sauvegarder( const char* filename)
+void Catalogue::Sauvegarder()
 {
-    string const nomFichier("/Users/alexandresenouci/Desktop/sauvegarde.txt");
+    string const nomFichier("test.sav");
     ofstream monFlux(nomFichier.c_str());
     Chainon *courant = this->liste->Get(0);
     int input;
@@ -248,7 +248,7 @@ void Catalogue::Sauvegarder( const char* filename)
                         monFlux << ts->GetMoyenTransport() << endl;
 
                     }
-                    monFlux << "end" << endl;
+                    monFlux << "end:" << endl;
                 }
                 courant = courant->GetSuivant();
             }
@@ -262,13 +262,13 @@ void Catalogue::Sauvegarder( const char* filename)
             cout << "2) sauvegarde en fonction d'un arrivé" << endl;
             cout << "3) sauvegarde en fonction d'un départ et arrivé" << endl;
             cin >> input;
-            if (input == 1 | input == 3)
+            if (input == 1 || input == 3)
             {
                 cin.ignore(1);
                 cout << "Entrez la ville de départ :" << endl;
                 cin.getline(villeDepart, 25);
             }
-            if (input == 2 | input == 3)
+            if (input == 2 || input == 3)
             {
                 cout << "Entrez la ville d'arrivée :" << endl;
                 cin.getline(villeArrivee, 25);
@@ -284,56 +284,56 @@ void Catalogue::Sauvegarder( const char* filename)
                     case 1:
                         if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0)
                         {
-                            monFlux << "ts" << endl;
+                            monFlux << "ts:" << endl;
                             monFlux << trajetSimple->GetDepart() << endl;
                             monFlux << trajetSimple->GetArrive() << endl;
                             monFlux << trajetSimple->GetMoyenTransport() << endl;
                         }
                         if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0)
                         {
-                            monFlux << "tc" << endl;
+                            monFlux << "tc:" << endl;
                             TrajetSimple *ts;
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
                                 ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts" << endl;
+                                monFlux << "ts:" << endl;
                                 monFlux << ts->GetDepart() << endl;
                                 monFlux << ts->GetArrive() << endl;
                                 monFlux << ts->GetMoyenTransport() << endl;
 
                             }
-                            monFlux << "end" << "\n" << endl;
+                            monFlux << "end:" << endl;
                         }
                     case 2:
                         if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
-                            monFlux << "ts" << endl;
+                            monFlux << "ts:" << endl;
                             monFlux << trajetSimple->GetDepart() << endl;
                             monFlux << trajetSimple->GetArrive() << endl;
                             monFlux << trajetSimple->GetMoyenTransport() << endl;
                         }
                         if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
-                            monFlux << "tc" << endl;
+                            monFlux << "tc:" << endl;
                             TrajetSimple *ts;
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
                                 ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts" << endl;
+                                monFlux << "ts:" << endl;
                                 monFlux << ts->GetDepart() << endl;
                                 monFlux << ts->GetArrive() << endl;
                                 monFlux << ts->GetMoyenTransport() << endl;
 
                             }
-                            monFlux << "end" << endl;
+                            monFlux << "end:" << endl;
                         }
                     case 3:
                         if (trajetSimple != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
                             && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
-                            monFlux << "ts" << endl;
+                            monFlux << "ts:" << endl;
                             monFlux << trajetSimple->GetDepart() << endl;
                             monFlux << trajetSimple->GetArrive() << endl;
                             monFlux << trajetSimple->GetMoyenTransport() << endl;
@@ -341,19 +341,19 @@ void Catalogue::Sauvegarder( const char* filename)
                         if (trajetCompose != nullptr && strcmp(courant->GetTrajet()->GetDepart(), villeDepart) == 0
                             && strcmp(courant->GetTrajet()->GetArrive(), villeArrivee) == 0)
                         {
-                            monFlux << "tc" << endl;
+                            monFlux << "tc:" << endl;
                             TrajetSimple *ts;
                             int index = trajetCompose->GetTaillec();
                             for (int i = 0; i < index; i++)
                             {
                                 ts = trajetCompose->SaveCompose(i);
-                                monFlux << "ts" << endl;
+                                monFlux << "ts:" << endl;
                                 monFlux << ts->GetDepart() << endl;
                                 monFlux << ts->GetArrive() << endl;
                                 monFlux << ts->GetMoyenTransport() << endl;
 
                             }
-                            monFlux << "end" << endl;
+                            monFlux << "end:" << endl;
                         }
                 }
                 courant = courant->GetSuivant();
