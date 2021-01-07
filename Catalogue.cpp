@@ -271,7 +271,6 @@ void Catalogue::Sauvegarder( const char* filename)
             if (input == 2 | input == 3)
             {
                 cout << "Entrez la ville d'arrivée :" << endl;
-                cin.ignore(1);
                 cin.getline(villeArrivee, 25);
             }
 
