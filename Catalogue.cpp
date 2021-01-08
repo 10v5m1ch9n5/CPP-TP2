@@ -439,7 +439,9 @@ void Catalogue::Sauvegarder(const char *filename)
         courant = courant->GetSuivant();
     }
 
-    delete[] villeArrivee;
-    delete[] villeDepart;
+    if(arriveeImposee)
+        delete[] villeArrivee;
+    if (departImpose)
+        delete[] villeDepart;
 }
 
