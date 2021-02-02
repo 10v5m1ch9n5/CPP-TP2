@@ -1,4 +1,7 @@
 # TP C++ n°2 : Héritage - Polymorphisme
+
+[Vidéo de démonstration](https://youtu.be/YRaFD0v_24g)
+
 ## A faire :
 
 - Trouver une solution sans `dynamic_cast` pour l'ajout d'un trajet dans un `TrajetCompose`
